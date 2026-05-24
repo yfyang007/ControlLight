@@ -150,15 +150,15 @@ Main config:
 
 Public training scripts:
 
-- `scripts/train/prepare_dataset_links.sh`
 - `scripts/train/train_local.sh`
 - `scripts/train/train_multigpu.sh`
 - `scripts/train/train_watchdog.sh`
 
-Typical usage:
+Prepare your dataset yourself so it matches the directory layout expected by the training config. For open-source use, this is simpler than shipping a repository-specific link helper.
+
+Typical local training:
 
 ```bash
-bash scripts/train/prepare_dataset_links.sh
 bash scripts/train/train_local.sh
 ```
 

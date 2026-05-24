@@ -9,7 +9,6 @@ This folder now exposes a small set of public, easier-to-read entrypoints.
 | Activate the shared project environment | `scripts/project_env.sh` |
 | Run prediction in the shared environment | `scripts/predict.sh` |
 | Run the local demo in the shared environment | `scripts/demo.sh` |
-| Prepare a symlinked local dataset view | `scripts/train/prepare_dataset_links.sh` |
 | Launch distributed training | `scripts/train/train_multigpu.sh` |
 | Start the standard local training run | `scripts/train/train_local.sh` |
 | Keep training alive with automatic resume | `scripts/train/train_watchdog.sh` |
@@ -25,21 +24,37 @@ The shared bootstrap lives at:
 
 - `scripts/project_env.sh`
 
-## Typical workflow
+## Dataset layout
 
-### 1) Prepare dataset links
+Prepare your dataset yourself under the paths referenced by the training config.
+The default public config expects a structure like:
 
-```bash
-bash scripts/train/prepare_dataset_links.sh
+```text
+datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/
+  control/
+  mask_normrgb_l01/
+  mask_normrgb_l02/
+  mask_normrgb_l03/
+  mask_normrgb_l04/
+  mask_normrgb_l05/
+  target_l01/
+  target_l02/
+  target_l03/
+  target_l04/
+  target_l05/
 ```
 
-### 2) Start the main training job
+If you use a different dataset root, duplicate `config/train_flux2klein_lora.yaml` and update the dataset paths there.
+
+## Typical workflow
+
+### 1) Start the main training job
 
 ```bash
 bash scripts/train/train_local.sh
 ```
 
-### 3) Or run the watchdog instead
+### 2) Or run the watchdog instead
 
 ```bash
 bash scripts/train/train_watchdog.sh
