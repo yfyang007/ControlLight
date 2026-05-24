@@ -1,0 +1,4 @@
+landing/** linguist-generated=true
+web_demo/** linguist-generated=true
+diffusers/** linguist-vendored=true
+assets/*.pdf binary

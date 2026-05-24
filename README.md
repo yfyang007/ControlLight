@@ -11,6 +11,12 @@ This repository contains:
 
 It does not bundle large runtime assets such as datasets, base models, or output results.
 
+## Teaser
+
+[Project teaser PDF](assets/teaser.pdf)
+
+The repository default is code-first. The teaser is included as a lightweight project summary, while the main entrypoint remains the source tree and README instructions below.
+
 ## Environment
 
 Use one environment for both inference and training:
