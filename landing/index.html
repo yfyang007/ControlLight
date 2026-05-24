@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ControlLight</title>
+    <meta
+      name="description"
+      content="ControlLight showcases a controllable low-light enhancement curve from input to alpha 1.00 with slider-based comparison."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+      <div class="ambient ambient-c"></div>
+
+      <header class="topbar glass-panel">
+        <div class="brand-lockup">
+          <span class="brand-mark">CL</span>
+          <div>
+            <p class="eyebrow">ControlLight</p>
+            <p class="brand-subtitle">Precision relighting for real low-light images</p>
+          </div>
+        </div>
+        <nav class="topnav">
+          <a href="#showcase">Showcase</a>
+          <a href="#strength">Strength</a>
+          <a href="#details">Details</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="hero-kicker">RealIR-Bench low-light restoration</p>
+            <h1>Use one slider to read the full inference curve.</h1>
+            <p class="hero-body">
+              页面重点就是一张图在同一路推理下，从 `input` 到 `alpha 1.00`
+              的连续变化。上面拖滑块切当前对比，下面五连排同时摊开整条曲线。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#showcase">View showcase</a>
+              <a class="button secondary" href="../README.md">Open repo notes</a>
+            </div>
+            <ul class="hero-stats">
+              <li class="glass-panel">
+                <span class="stat-value">34</span>
+                <span class="stat-label">bench samples rendered</span>
+              </li>
+              <li class="glass-panel">
+                <span class="stat-value">4</span>
+                <span class="stat-label">inference strengths per sample</span>
+              </li>
+              <li class="glass-panel">
+                <span class="stat-value">1.00</span>
+                <span class="stat-label">maximum showcased intensity</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-visual glass-panel">
+            <div class="hero-visual-header">
+              <div>
+                <p class="eyebrow">Intensity compare</p>
+                <h2>Same image, stronger inference.</h2>
+              </div>
+              <div class="hero-control-meta">
+                <span class="hero-control-value" id="hero-label">Alpha 1.00</span>
+                <span class="hero-control-note" id="hero-footnote">Maximum intensity</span>
+              </div>
+            </div>
+
+            <div
+              class="compare compare-large"
+              data-compare
+              data-before="./assets/lowlight_0003/input.png"
+              data-after="./assets/lowlight_0003/enhance_default/alpha_1.00.png"
+              data-position="58"
+              aria-label="Comparison slider showing ControlLight intensity progression"
+            >
+              <img
+                class="compare-image"
+                data-before-image
+                src="./assets/lowlight_0003/input.png"
+                alt="Dark input scene"
+              />
+              <div class="compare-after-wrap" data-after-wrap>
+                <img
+                  class="compare-image"
+                  data-after-image
+                  src="./assets/lowlight_0003/enhance_default/alpha_1.00.png"
+                  alt="Enhanced scene"
+                />
+              </div>
+              <div class="compare-divider" data-divider>
+                <span class="compare-handle"></span>
+              </div>
+              <div class="compare-label compare-label-left">Input</div>
+              <div class="compare-label compare-label-right" id="hero-compare-label">Alpha 1.00</div>
+            </div>
+
+            <div class="strength-control glass-panel">
+              <div class="strength-control-top">
+                <p class="strength-control-title">Inference strength</p>
+                <p class="strength-control-text">滑块控制当前对比图</p>
+              </div>
+              <input
+                class="strength-slider"
+                id="hero-strength-slider"
+                type="range"
+                min="0"
+                max="3"
+                step="1"
+                value="3"
+                aria-label="Hero strength slider"
+              />
+              <div class="strength-steps">
+                <span>0.25</span>
+                <span>0.50</span>
+                <span>0.75</span>
+                <span>1.00</span>
+              </div>
+            </div>
+
+            <div class="progression-strip" id="hero-progression-strip"></div>
+
+            <div class="hero-caption">
+              <p class="hero-caption-title">Sample `lowlight_0003`</p>
+              <p class="hero-caption-body">
+                滑块让当前 before/after 对比更集中，五连排让整条强度曲线一次看清。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-strip glass-panel" id="details">
+          <div>
+            <p class="eyebrow">Why this layout</p>
+            <h2>One control axis, shown two ways.</h2>
+          </div>
+          <p>
+            上层是交互式对比，下层是同图并排全量展示。这样不会丢掉滑块的沉浸感，也不会牺牲对强度递进的整体理解。
+          </p>
+        </section>
+
+        <section class="showcase-section" id="showcase">
+          <div class="section-heading">
+            <p class="eyebrow">Scrollable showcase</p>
+            <h2>Every card keeps one image together.</h2>
+            <p>
+              每张卡片都先用滑块选当前强度，再把同一张图的
+              `Input / 0.25 / 0.50 / 0.75 / 1.00`
+              并排摆在一起，对比会更明显。
+            </p>
+          </div>
+
+          <div class="showcase-rail" id="showcase-rail"></div>
+        </section>
+
+        <section class="modes-section" id="strength">
+          <div class="section-heading">
+            <p class="eyebrow">Strength scale</p>
+            <h2>Four points, one readable ramp.</h2>
+          </div>
+
+          <div class="mode-grid">
+            <article class="mode-card glass-panel">
+              <span class="mode-badge">0.25</span>
+              <h3>Subtle opening</h3>
+              <p>轻推暗部，保留更多原始夜感。</p>
+            </article>
+            <article class="mode-card glass-panel">
+              <span class="mode-badge">0.50 / 0.75</span>
+              <h3>Middle ramp</h3>
+              <p>最适合展示 controllability，变化明显但还保留层次。</p>
+            </article>
+            <article class="mode-card glass-panel">
+              <span class="mode-badge">1.00</span>
+              <h3>Full push</h3>
+              <p>用来交代控制轴上限，让用户知道最强能推到哪里。</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="showcase-card-template">
+      <article class="showcase-card glass-panel">
+        <div class="showcase-card-top">
+          <div>
+            <p class="eyebrow showcase-card-kicker"></p>
+            <h3 class="showcase-card-title"></h3>
+          </div>
+          <div class="showcase-card-meta">
+            <span class="showcase-card-active"></span>
+            <span class="showcase-card-note"></span>
+          </div>
+        </div>
+
+        <div class="showcase-compare compare" data-compare data-position="52">
+          <img class="compare-image" data-before-image alt="Low-light input" />
+          <div class="compare-after-wrap" data-after-wrap>
+            <img class="compare-image" data-after-image alt="Enhanced output" />
+          </div>
+          <div class="compare-divider" data-divider>
+            <span class="compare-handle"></span>
+          </div>
+          <div class="compare-label compare-label-left">Input</div>
+          <div class="compare-label compare-label-right showcase-card-label"></div>
+        </div>
+
+        <div class="strength-control showcase-strength-control glass-panel">
+          <div class="strength-control-top">
+            <p class="strength-control-title">Strength</p>
+            <p class="strength-control-text">同图四档强度</p>
+          </div>
+          <input class="strength-slider showcase-strength-slider" type="range" min="0" max="3" step="1" value="3" />
+          <div class="strength-steps">
+            <span>0.25</span>
+            <span>0.50</span>
+            <span>0.75</span>
+            <span>1.00</span>
+          </div>
+        </div>
+
+        <div class="progression-strip showcase-progression-strip"></div>
+
+        <p class="showcase-description"></p>
+        <div class="showcase-footer">
+          <span class="showcase-footnote"></span>
+          <a class="showcase-gif-link" target="_blank" rel="noreferrer">Open GIF</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

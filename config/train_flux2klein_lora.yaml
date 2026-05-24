@@ -1,0 +1,171 @@
+job: extension
+config:
+  name: controllight_lora_train
+  process:
+  - type: alpha_lora_trainer
+    training_folder: output
+    log_dir: output/.tensorboard
+    device: cuda:0
+    network:
+      type: lora
+      linear: 64
+      linear_alpha: 64
+    save:
+      dtype: float16
+      save_every: 500
+      max_step_saves_to_keep: 20
+      push_to_hub: false
+    datasets:
+    - folder_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/target_l01
+      control_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/control
+      mask_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/mask_normrgb_l01
+      mask_min_value: 0.0
+      caption_ext: json
+      caption_dropout_rate: 0.0
+      shuffle_tokens: false
+      cache_latents_to_disk: false
+      full_size_control_images: true
+      network_weight: 0.2
+      resolution:
+      - 1024
+      cache_latents: false
+      cache_text_embeddings: false
+      cache_clip_vision_to_disk: false
+    - folder_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/target_l02
+      control_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/control
+      mask_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/mask_normrgb_l02
+      mask_min_value: 0.0
+      caption_ext: json
+      caption_dropout_rate: 0.0
+      shuffle_tokens: false
+      cache_latents_to_disk: false
+      full_size_control_images: true
+      network_weight: 0.4
+      resolution:
+      - 1024
+      cache_latents: false
+      cache_text_embeddings: false
+      cache_clip_vision_to_disk: false
+    - folder_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/target_l03
+      control_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/control
+      mask_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/mask_normrgb_l03
+      mask_min_value: 0.0
+      caption_ext: json
+      caption_dropout_rate: 0.0
+      shuffle_tokens: false
+      cache_latents_to_disk: false
+      full_size_control_images: true
+      network_weight: 0.6
+      resolution:
+      - 1024
+      cache_latents: false
+      cache_text_embeddings: false
+      cache_clip_vision_to_disk: false
+    - folder_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/target_l04
+      control_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/control
+      mask_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/mask_normrgb_l04
+      mask_min_value: 0.0
+      caption_ext: json
+      caption_dropout_rate: 0.0
+      shuffle_tokens: false
+      cache_latents_to_disk: false
+      full_size_control_images: true
+      network_weight: 0.8
+      resolution:
+      - 1024
+      cache_latents: false
+      cache_text_embeddings: false
+      cache_clip_vision_to_disk: false
+    - folder_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/target_l05
+      control_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/control
+      mask_path: datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/mask_normrgb_l05
+      mask_min_value: 0.0
+      caption_ext: json
+      caption_dropout_rate: 0.0
+      shuffle_tokens: false
+      cache_latents_to_disk: false
+      full_size_control_images: true
+      network_weight: 1.0
+      resolution:
+      - 1024
+      cache_latents: false
+      cache_text_embeddings: false
+      cache_clip_vision_to_disk: false
+    train:
+      batch_size: 2
+      steps: 6000
+      start_step: 0
+      gradient_accumulation_steps: 2
+      train_unet: true
+      train_text_encoder: false
+      gradient_checkpointing: true
+      noise_scheduler: flowmatch
+      timestep_type: weighted
+      optimizer: adamw8bit
+      lr: 0.0001
+      dtype: bf16
+      skip_first_sample: true
+      disable_sampling: true
+      ema_config:
+        use_ema: false
+    model:
+      name_or_path: ./models/FLUX.2-klein-base-9B
+      vae_path: ./models/flux2_vae/ae.safetensors
+      arch: flux2_klein_9b
+      quantize: true
+      quantize_te: true
+      qtype: qfloat8
+      qtype_te: qfloat8
+      low_vram: true
+      model_kwargs:
+        match_target_res: true
+    sample:
+      sampler: flowmatch
+      sample_every: 0
+      width: 1024
+      height: 1024
+      prompts: []
+      neg: ''
+      seed: 42
+      walk_seed: false
+      guidance_scale: 1.0
+      sample_steps: 20
+      network_multiplier: 1.0
+    alpha_visualization:
+      enabled: false
+      before_first_step: false
+      every: 0
+      distributed_periodic: false
+      alphas:
+      - 0.18
+      - 0.36
+      - 0.54
+      - 0.72
+      - 0.9
+      random_middle_alpha: false
+      max_items: 1
+      match_batch_resolution: true
+      width: 1024
+      height: 1024
+      tile_width: 256
+      tile_height: 256
+      sample_steps: 20
+      guidance_scale: 1.0
+      seed: 42
+      format: jpg
+      output_dir: samples_batch
+      save_gif: true
+      gif_duration_ms: 450
+      fail_on_error: false
+      prompt: Enhance this low-light image by lifting exposure and recovering visible
+        details while preserving identity, geometry, atmosphere, natural colors, and
+        avoiding halos, noise, over-sharpening, or overexposure.
+    logging:
+      log_every: 10
+      use_wandb: false
+      verbose: false
+meta:
+  name: controllight_lora_train
+  version: '1.0'
+  training_style: weighted flow matching with normalized-brightness offline masks
+    and 0.2-step network weights, old dataloader route

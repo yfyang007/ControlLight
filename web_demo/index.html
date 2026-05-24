@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ControlLight 本地 Demo</title>
+    <meta
+      name="description"
+      content="上传一张低光图，直接输出 ControlLight 四档强度结果与对比 GIF。"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+      <div class="ambient ambient-c"></div>
+
+      <header class="topbar glass-panel">
+        <div class="brand-lockup">
+          <span class="brand-mark">CL</span>
+          <div>
+            <p class="eyebrow">ControlLight</p>
+            <p class="brand-subtitle">本地上传式正向强度控制推理 Demo</p>
+          </div>
+        </div>
+        <nav class="topnav">
+          <a href="#launch">开始推理</a>
+          <a href="#results">结果展示</a>
+          <a href="#notes">运行说明</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="hero-kicker">Upload · Infer · Compare · Export</p>
+            <h1>上传一张图，直接得到四档强度图和 GIF。</h1>
+            <p class="hero-body">
+              这个本地 demo 会对同一张输入图跑 4 个 alpha 强度点，输出单张结果、整组 GIF，
+              并保存在本地结果目录里。整体设计偏“单任务工作台”，适合你自己反复测图。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#launch">开始上传</a>
+              <a class="button secondary" href="#notes">查看默认参数</a>
+            </div>
+            <ul class="hero-stats">
+              <li class="glass-panel">
+                <span class="stat-value">4</span>
+                <span class="stat-label">固定强度档位</span>
+              </li>
+              <li class="glass-panel">
+                <span class="stat-value">1</span>
+                <span class="stat-label">自动生成对比 GIF</span>
+              </li>
+              <li class="glass-panel">
+                <span class="stat-value">Local</span>
+                <span class="stat-label">所有结果保存在本机</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-panel glass-panel">
+            <div class="hero-panel-top">
+              <div>
+                <p class="eyebrow">默认输出</p>
+                <h2>Input + 4 Strengths + GIF</h2>
+              </div>
+              <span class="pill">Alpha sweep</span>
+            </div>
+            <div class="hero-grid" id="hero-strength-grid">
+              <div class="hero-tile hero-tile-input">
+                <span class="tile-tag">Input</span>
+              </div>
+              <div class="hero-tile"><span class="tile-tag">0.25</span></div>
+              <div class="hero-tile"><span class="tile-tag">0.50</span></div>
+              <div class="hero-tile"><span class="tile-tag">0.75</span></div>
+              <div class="hero-tile"><span class="tile-tag">1.00</span></div>
+            </div>
+            <p class="hero-caption">
+              页面上直接预览 GIF 和四张结果图；磁盘里额外保留 metadata.json 与整组输出目录。
+            </p>
+          </div>
+        </section>
+
+        <section class="workspace" id="launch">
+          <div class="workspace-main glass-panel">
+            <div class="section-heading compact">
+              <p class="eyebrow">Inference workspace</p>
+              <h2>上传并运行</h2>
+              <p>默认就是四档强度控制；如果需要，也可以在高级参数里改 seed、step 和 prompt。</p>
+            </div>
+
+            <form id="inference-form" class="inference-form">
+              <label class="upload-zone" for="image-input" id="upload-zone">
+                <input id="image-input" name="image" type="file" accept="image/png,image/jpeg,image/webp,image/bmp" hidden />
+                <div class="upload-zone-inner">
+                  <div class="upload-icon">↥</div>
+                  <h3>拖进来，或者点这里上传图片</h3>
+                  <p>支持 PNG / JPG / WEBP / BMP，建议单张图测试。</p>
+                  <span class="upload-chip">单图上传</span>
+                </div>
+              </label>
+
+              <div class="preview-shell" id="preview-shell" hidden>
+                <div class="preview-card glass-subpanel">
+                  <div class="preview-card-top">
+                    <span class="preview-label">Input preview</span>
+                    <button type="button" class="text-button" id="clear-image-btn">重新选择</button>
+                  </div>
+                  <img id="input-preview" alt="Uploaded preview" />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <label class="field wide">
+                  <span class="field-label">Prompt（可选）</span>
+                  <textarea id="prompt-input" name="prompt" rows="3" placeholder="可留空，默认按当前 pipeline 的默认行为推理"></textarea>
+                </label>
+
+                <label class="field">
+                  <span class="field-label">Alpha 列表</span>
+                  <input id="alphas-input" name="alphas" type="text" value="0.25,0.50,0.75,1.00" />
+                </label>
+
+                <label class="field">
+                  <span class="field-label">Seed</span>
+                  <input id="seed-input" name="seed" type="number" value="42" />
+                </label>
+              </div>
+
+              <details class="advanced-panel glass-subpanel">
+                <summary>高级参数</summary>
+                <div class="advanced-grid">
+                  <label class="field">
+                    <span class="field-label">Inference steps</span>
+                    <input id="steps-input" name="num_inference_steps" type="number" value="20" min="1" />
+                  </label>
+                  <label class="field">
+                    <span class="field-label">Guidance scale</span>
+                    <input id="guidance-input" name="guidance_scale" type="number" value="1.0" step="0.1" />
+                  </label>
+                  <label class="field">
+                    <span class="field-label">Max sequence length</span>
+                    <input id="max-seq-input" name="max_sequence_length" type="number" value="512" min="1" />
+                  </label>
+                  <label class="field">
+                    <span class="field-label">GIF frame duration (ms)</span>
+                    <input id="gif-duration-input" name="gif_duration_ms" type="number" value="500" min="50" step="10" />
+                  </label>
+                </div>
+              </details>
+
+              <div class="form-actions">
+                <button id="run-button" type="submit" class="button primary large">开始推理</button>
+                <span class="status-pill" id="status-pill">等待上传</span>
+              </div>
+            </form>
+          </div>
+
+          <aside class="workspace-side glass-panel" id="notes">
+            <div class="section-heading compact">
+              <p class="eyebrow">Runtime notes</p>
+              <h2>运行信息</h2>
+            </div>
+            <dl class="meta-list" id="runtime-meta"></dl>
+            <div class="tip-card glass-subpanel">
+              <p class="tip-title">建议</p>
+              <p class="tip-body">
+                第一次推理会先加载模型，因此明显更慢；之后继续测图会快很多。推理完成后，页面和本地目录都会保留结果。
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="results-section" id="results">
+          <div class="section-heading">
+            <p class="eyebrow">Results</p>
+            <h2>推理结果会出现在这里</h2>
+            <p>主展示只保留 GIF 和滑块强度对比；四张结果图仍然会保存在本地输出目录里。</p>
+          </div>
+
+          <div class="empty-state glass-panel" id="empty-state">
+            <h3>还没有结果</h3>
+            <p>上传一张图片并点击“开始推理”后，这里会自动刷新成结果面板。</p>
+          </div>
+
+          <div class="results-shell" id="results-shell" hidden>
+            <div class="result-summary glass-panel">
+              <div class="result-summary-top">
+                <div>
+                  <p class="eyebrow">Run summary</p>
+                  <h3 id="result-title">当前结果</h3>
+                </div>
+                <div class="result-links">
+                  <a id="gif-link" class="button secondary small" target="_blank" rel="noreferrer">打开 GIF</a>
+                  <a id="grid-link" class="button secondary small" target="_blank" rel="noreferrer">打开 Grid</a>
+                  <a id="meta-link" class="button secondary small" target="_blank" rel="noreferrer">打开 Metadata</a>
+                </div>
+              </div>
+              <div class="summary-grid">
+                <div class="summary-item">
+                  <span class="summary-label">输出目录</span>
+                  <code id="output-dir"></code>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">Prompt</span>
+                  <code id="prompt-value"></code>
+                </div>
+              </div>
+            </div>
+
+            <div class="compare-layout compare-layout-featured">
+              <div class="gif-panel glass-panel">
+                <div class="panel-head">
+                  <span class="panel-title">对比 GIF</span>
+                </div>
+                <img id="result-gif-image" alt="Comparison GIF" />
+              </div>
+
+              <div class="strengths-panel glass-panel">
+                <div class="panel-head">
+                  <div>
+                    <span class="panel-title">滑块强度对比</span>
+                    <p class="panel-subtitle">参考 Kontinuous Kontext 的强度滑块展示方式</p>
+                  </div>
+                  <span class="pill" id="compare-alpha-pill">Alpha 1.00</span>
+                </div>
+
+                <div class="strength-compare-shell">
+                  <div
+                    class="compare compare-large"
+                    id="result-compare"
+                    data-compare
+                    data-position="56"
+                    aria-label="ControlLight strength compare"
+                  >
+                    <img
+                      class="compare-image"
+                      id="result-compare-before"
+                      data-before-image
+                      alt="Input image"
+                    />
+                    <div class="compare-after-wrap" data-after-wrap>
+                      <img
+                        class="compare-image"
+                        id="result-compare-after"
+                        data-after-image
+                        alt="Strength-controlled output"
+                      />
+                    </div>
+                    <div class="compare-divider" data-divider>
+                      <span class="compare-handle"></span>
+                    </div>
+                    <div class="compare-label compare-label-left">Input</div>
+                    <div class="compare-label compare-label-right" id="result-compare-label">Alpha 1.00</div>
+                  </div>
+                </div>
+
+                <div class="strength-control glass-subpanel">
+                  <div class="strength-control-top">
+                    <div>
+                      <p class="strength-control-title">Strength control</p>
+                      <p class="strength-control-text">拖动滑块切换 4 档强度结果</p>
+                    </div>
+                    <span class="strength-control-value" id="strength-control-value">1.00</span>
+                  </div>
+                  <input
+                    class="strength-slider"
+                    id="strength-slider"
+                    type="range"
+                    min="0"
+                    max="3"
+                    step="1"
+                    value="3"
+                    aria-label="Strength slider"
+                  />
+                  <div class="strength-steps">
+                    <span>0.25</span>
+                    <span>0.50</span>
+                    <span>0.75</span>
+                    <span>1.00</span>
+                  </div>
+                </div>
+
+                <div class="strength-grid" id="strength-grid" hidden></div>
+              </div>
+            </div>
+
+            <div class="result-links-inline glass-subpanel">
+              <div class="panel-head">
+                <span class="panel-title">输出文件</span>
+              </div>
+              <p class="links-note">页面主展示做了精简，但原始结果文件都在下面这些链接和本地目录里。</p>
+              <div class="result-links">
+                <a id="gif-link-inline" class="button secondary small" target="_blank" rel="noreferrer">打开 GIF</a>
+                <a id="grid-link-inline" class="button secondary small" target="_blank" rel="noreferrer">打开 Grid</a>
+                <a id="meta-link-inline" class="button secondary small" target="_blank" rel="noreferrer">打开 Metadata</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
