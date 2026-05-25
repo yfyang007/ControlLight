@@ -1,216 +1,166 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ControlLight</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ControlLight Paper Homepage</title>
     <meta
       name="description"
-      content="ControlLight is a code-first FLUX.2-Klein LoRA repository for controllable low-light enhancement."
+      content="ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement"
     />
-    <style>
-      :root {
-        --bg: #f4f0e8;
-        --ink: #181512;
-        --muted: #5f584f;
-        --panel: rgba(255, 251, 244, 0.85);
-        --line: rgba(24, 21, 18, 0.12);
-        --accent: #b6461f;
-        --accent-ink: #fff7ee;
-        --shadow: 0 24px 60px rgba(52, 33, 19, 0.14);
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        color: var(--ink);
-        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-        background:
-          radial-gradient(circle at top left, rgba(182, 70, 31, 0.12), transparent 32%),
-          radial-gradient(circle at top right, rgba(77, 109, 86, 0.12), transparent 28%),
-          linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
-      }
-      .wrap {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 56px 24px 80px;
-      }
-      .hero,
-      .teaser {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        box-shadow: var(--shadow);
-      }
-      .hero {
-        padding: 40px;
-      }
-      .eyebrow {
-        margin: 0 0 12px;
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-      h1 {
-        margin: 0;
-        font-size: clamp(38px, 7vw, 72px);
-        line-height: 0.95;
-        max-width: 760px;
-      }
-      .lede {
-        max-width: 760px;
-        margin: 20px 0 0;
-        color: var(--muted);
-        font-size: 19px;
-        line-height: 1.75;
-      }
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 28px;
-      }
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 48px;
-        padding: 0 18px;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        text-decoration: none;
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.7);
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        font-size: 13px;
-      }
-      .button.primary {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: var(--accent-ink);
-      }
-      .facts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 14px;
-        margin-top: 32px;
-      }
-      .fact {
-        padding: 16px 18px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.52);
-        border: 1px solid var(--line);
-      }
-      .fact strong {
-        display: block;
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 8px;
-      }
-      .fact span {
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.6;
-      }
-      .teaser {
-        margin-top: 28px;
-        padding: 22px;
-      }
-      .teaser-head {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 12px;
-        align-items: baseline;
-        margin-bottom: 14px;
-      }
-      h2 {
-        margin: 0;
-        font-size: 28px;
-      }
-      .teaser-note {
-        margin: 6px 0 0;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.6;
-      }
-      .teaser-frame {
-        width: 100%;
-        height: min(78vh, 960px);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: #fffdfa;
-      }
-      .footer {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-      code {
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        font-size: 0.94em;
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 2px 6px;
-      }
-    </style>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="wrap">
-      <section class="hero">
-        <p class="eyebrow">Code-first repository</p>
-        <h1>ControlLight ships as code by default, not as an HTML landing page.</h1>
-        <p class="lede">
-          The main project lives in the repository source tree: unified inference, training,
-          and local vendored integration for a FLUX.2-Klein low-light enhancement LoRA.
-          This page is only a lightweight project front door and teaser host.
-        </p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/yfyang007/ControlLight">Open code on GitHub</a>
-          <a class="button" href="https://github.com/yfyang007/ControlLight/blob/main/README.md">Read README</a>
-          <a class="button" href="./assets/teaser.pdf">Open teaser PDF</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-block">
+          <span class="paper-chip">CVPR / Project Page</span>
+          <h1>
+            ControlLight: Towards Controllable, Consistent, and
+            <span>Generalizable Low-Light Enhancement</span>
+          </h1>
+          <p class="subtitle">
+            一个面向论文展示的首页原型：顶部讲清论文目标，中部展示
+            pipeline 与 framework，底部用 20 张可交互样例图展示连续可控的增强强度。
+          </p>
+          <div class="hero-links">
+            <a href="#gallery" class="hero-link primary">Interactive Gallery</a>
+            <a href="#pipeline" class="hero-link">Pipeline</a>
+            <a href="#framework" class="hero-link">Framework</a>
+          </div>
         </div>
-        <div class="facts">
-          <div class="fact">
-            <strong>Environment</strong>
-            <span>One shared <code>aitoolkit</code> environment for inference and training.</span>
-          </div>
-          <div class="fact">
-            <strong>Inference</strong>
-            <span><code>predict-image</code>, <code>predict-four</code>, and <code>predict-strengths</code>.</span>
-          </div>
-          <div class="fact">
-            <strong>Training</strong>
-            <span>Single-card and multi-card LoRA training from the same public repo.</span>
-          </div>
+
+        <div class="hero-metrics">
+          <article class="metric-card">
+            <span class="metric-value">20</span>
+            <span class="metric-label">interactive samples</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-value">10 + 10</span>
+            <span class="metric-label">environment / portrait</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-value">0 → 1</span>
+            <span class="metric-label">controllable enhancement strength</span>
+          </article>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="overview-panel">
+        <div class="section-heading">
+          <span class="section-chip">Overview</span>
+          <h2>论文首页结构</h2>
+        </div>
+        <div class="overview-grid">
+          <article class="overview-card">
+            <h3>Controllable</h3>
+            <p>
+              通过统一的强度滑杆表达从输入到增强的连续控制轴，让用户一眼看清不同强度下的恢复趋势。
+            </p>
+          </article>
+          <article class="overview-card">
+            <h3>Consistent</h3>
+            <p>
+              在不同亮度区间内尽量保持结构、身份和空间关系稳定，避免增强过程中出现不必要的内容漂移。
+            </p>
+          </article>
+          <article class="overview-card">
+            <h3>Generalizable</h3>
+            <p>
+              同一套展示同时覆盖室内、街景、雨夜、人像、群体与逆光场景，强调方法在多域低照图像上的泛化能力。
+            </p>
+          </article>
         </div>
       </section>
 
-      <section class="teaser">
-        <div class="teaser-head">
-          <div>
-            <p class="eyebrow">Teaser</p>
-            <h2>Project overview on the homepage</h2>
-          </div>
+      <section class="figure-section" id="pipeline">
+        <div class="section-heading">
+          <span class="section-chip">Pipeline</span>
+          <h2>Method Pipeline</h2>
+          <p>将你提供的论文 pipeline 图直接放在首页核心区，作为方法入口。</p>
         </div>
-        <p class="teaser-note">
-          The teaser is embedded here for quick browsing, but the default artifact remains the code repository itself.
-        </p>
-        <object class="teaser-frame" data="./assets/teaser.pdf" type="application/pdf">
-          <p>
-            Your browser cannot embed the teaser PDF.
-            <a href="./assets/teaser.pdf">Download or open it directly here</a>.
-          </p>
-        </object>
-        <div class="footer">
-          GitHub Pages branch for <code>yfyang007/ControlLight</code>.
+        <div class="figure-card">
+          <img
+            src="./assets/paper_homepage/figures/pipeline.png"
+            alt="ControlLight pipeline figure"
+          />
         </div>
       </section>
-    </div>
+
+      <section class="figure-section" id="framework">
+        <div class="section-heading">
+          <span class="section-chip">Framework</span>
+          <h2>Training and Inference Framework</h2>
+          <p>framework 图单独成节，方便论文读者从整体结构切换到模块关系理解。</p>
+        </div>
+        <div class="figure-card">
+          <img
+            src="./assets/paper_homepage/figures/framework.png"
+            alt="ControlLight framework figure"
+          />
+        </div>
+      </section>
+
+      <section class="figure-section" id="real-output">
+        <div class="section-heading">
+          <span class="section-chip">Real Output</span>
+          <h2>Actual ControlLight Comparison GIF</h2>
+          <p>
+            除了滑杆式主页展示，这里补充一张真实推理生成的 comparison GIF，直接展示输入与增强结果的逐强度变化。
+          </p>
+        </div>
+        <div class="figure-card figure-card-narrow">
+          <img
+            src="./assets/paper_homepage/examples/dark_hallway_comparison.gif"
+            alt="Actual ControlLight comparison gif example"
+          />
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="section-heading">
+          <span class="section-chip">Interactive Gallery</span>
+          <h2>20-Image Homepage Showcase</h2>
+          <p>
+            使用你给出的苹果风格轻量滑杆样式。每张卡片独立控制，展示同一输入图像在连续增强强度下的视觉趋势。
+          </p>
+        </div>
+
+        <div class="gallery-summary">
+          <span>Selected from curated low-light materials</span>
+          <span>10 environments · 10 portraits</span>
+          <span>Warm dark paper-page visual language</span>
+        </div>
+
+        <div class="grid-container" id="gallery-grid"></div>
+      </section>
+    </main>
+
+    <template id="interactive-card-template">
+      <article class="interactive-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title"></span>
+            <span class="card-subtitle"></span>
+          </div>
+          <div class="val-indicator">s = 0.50</div>
+        </div>
+        <div class="image-container">
+          <img class="target-img" alt="" />
+        </div>
+        <div class="card-footer">
+          <div class="slider-label-group">
+            <span>Enhancement Strength</span>
+            <span>s = 0.00 → 1.00</span>
+          </div>
+          <input type="range" min="0" max="100" value="50" class="apple-slider" />
+        </div>
+      </article>
+    </template>
+
+    <script src="./gallery-data.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
