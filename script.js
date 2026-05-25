@@ -138,8 +138,8 @@ function bindNearestViewer({ slider, image, sample, preloadAll = false }) {
 }
 
 function setupHeroAutoplay({ slider, image, sample, viewer }) {
-  const sequence = [0, 25, 50, 75, 100, 75, 50, 25];
-  const frameMs = 520;
+  const sequence = [0, 25, 50, 75, 100];
+  const frameMs = 500;
   const resumeDelayMs = 1700;
   let sequenceIndex = 0;
   let timer = 0;
@@ -151,9 +151,7 @@ function setupHeroAutoplay({ slider, image, sample, viewer }) {
     timer = 0;
   };
 
-  const setFrame = (value) => {
-    slider.value = String(value);
-    updateSliderFill(slider);
+  const setImageFrame = (value) => {
     const frame = nearestFrame(value);
     const nextSrc = sample.paths[frame.key];
     if (nextSrc && image.getAttribute('src') !== nextSrc) {
@@ -161,9 +159,14 @@ function setupHeroAutoplay({ slider, image, sample, viewer }) {
     }
   };
 
+  const resetSliderToOrigin = () => {
+    slider.value = '0';
+    updateSliderFill(slider);
+  };
+
   const tick = () => {
     if (!playing) return;
-    setFrame(sequence[sequenceIndex]);
+    setImageFrame(sequence[sequenceIndex]);
     sequenceIndex = (sequenceIndex + 1) % sequence.length;
     timer = window.setTimeout(tick, frameMs);
   };
@@ -172,6 +175,7 @@ function setupHeroAutoplay({ slider, image, sample, viewer }) {
     if (playing && timer) return;
     playing = true;
     stopTimer();
+    resetSliderToOrigin();
     tick();
   };
 
@@ -182,21 +186,23 @@ function setupHeroAutoplay({ slider, image, sample, viewer }) {
 
   const resumeSoon = () => {
     if (resumeTimer) window.clearTimeout(resumeTimer);
-    resumeTimer = window.setTimeout(start, resumeDelayMs);
+    resumeTimer = window.setTimeout(() => {
+      sequenceIndex = 0;
+      start();
+    }, resumeDelayMs);
   };
 
   // Use real pre-decoded still frames instead of an encoded GIF to avoid GIF
-  // palette/dithering artifacts on low-light gradients.
+  // palette/dithering artifacts on low-light gradients. During autoplay, keep
+  // the slider at the origin; only manual slider interaction moves it.
   Promise.all(FRAMES.map((frame) => preloadImage(sample.paths[frame.key]))).finally(() => {
+    resetSliderToOrigin();
     window.setTimeout(start, 260);
   });
 
   slider.addEventListener('pointerdown', pause, { passive: true });
   slider.addEventListener('touchstart', pause, { passive: true });
-  slider.addEventListener('input', () => {
-    pause();
-    sequenceIndex = Math.max(0, sequence.findIndex((value) => value >= Number(slider.value)));
-  }, { passive: true });
+  slider.addEventListener('input', pause, { passive: true });
   slider.addEventListener('change', resumeSoon, { passive: true });
   slider.addEventListener('pointerup', resumeSoon, { passive: true });
   slider.addEventListener('touchend', resumeSoon, { passive: true });
@@ -209,6 +215,7 @@ function setupHeroAutoplay({ slider, image, sample, viewer }) {
       if (playing) {
         pause();
       } else {
+        sequenceIndex = 0;
         start();
       }
     });
