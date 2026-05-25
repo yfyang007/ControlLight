@@ -42,6 +42,7 @@ lycoris-lora==1.8.3
 timm==1.0.22
 open-clip-torch==3.3.0
 optimum-quanto==0.2.4
+lpips==0.1.4
 
 # Image / data processing
 Pillow==11.3.0
