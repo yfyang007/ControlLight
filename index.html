@@ -32,10 +32,10 @@
               <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span><span>Project Page</span>
             </a>
             <a href="https://huggingface.co/ControlLight/ControlLight" class="link-pill">
-              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 15c1.1-1.8 2.5-2.7 4-2.7s2.9.9 4 2.7"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg></span><span>Models</span>
+              <span class="icon hf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFD21E"/><circle cx="8.6" cy="9.2" r="1.15" fill="#3A2A10"/><circle cx="15.4" cy="9.2" r="1.15" fill="#3A2A10"/><path d="M8.2 14.2c1.05 1.15 2.25 1.72 3.8 1.72s2.75-.57 3.8-1.72" fill="none" stroke="#3A2A10" stroke-width="1.55" stroke-linecap="round"/><path d="M6.2 11.9c-1.9-.95-3.15-2.1-2.55-3.25.48-.92 1.9-.45 3.15.82" fill="none" stroke="#3A2A10" stroke-width="1.35" stroke-linecap="round"/><path d="M17.8 11.9c1.9-.95 3.15-2.1 2.55-3.25-.48-.92-1.9-.45-3.15.82" fill="none" stroke="#3A2A10" stroke-width="1.35" stroke-linecap="round"/></svg></span><span>Models</span>
             </a>
             <a href="https://huggingface.co/datasets/ControlLight/Light100K" class="link-pill">
-              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 12 4l8 3.5-8 3.5-8-3.5Z"/><path d="M4 12l8 3.5 8-3.5"/><path d="M4 16.5 12 20l8-3.5"/></svg></span><span>Light100K</span>
+              <span class="icon hf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFD21E"/><circle cx="8.6" cy="9.2" r="1.1" fill="#3A2A10"/><circle cx="15.4" cy="9.2" r="1.1" fill="#3A2A10"/><path d="M8 14.1c1.15 1.25 2.45 1.85 4 1.85s2.85-.6 4-1.85" fill="none" stroke="#3A2A10" stroke-width="1.45" stroke-linecap="round"/><path d="M6.4 18.2h11.2" stroke="#3A2A10" stroke-width="1.25" stroke-linecap="round" opacity=".55"/><path d="M7.8 5.8h8.4" stroke="#3A2A10" stroke-width="1.25" stroke-linecap="round" opacity=".55"/></svg></span><span>Light100K</span>
             </a>
             <a href="https://github.com/yfyang007/ControlLight" class="link-pill">
               <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.22 1.83 1.22 1.06 1.82 2.79 1.29 3.47.99.11-.78.42-1.29.76-1.58-2.66-.31-5.47-1.31-5.47-5.86 0-1.29.47-2.35 1.23-3.18-.12-.3-.53-1.56.12-3.24 0 0 1-.32 3.3 1.21a11.5 11.5 0 0 1 6 0c2.3-1.53 3.29-1.21 3.29-1.21.66 1.68.25 2.94.13 3.24.77.83 1.23 1.89 1.23 3.18 0 4.56-2.81 5.55-5.49 5.85.43.37.81 1.1.81 2.23v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg></span><span>Code</span>
@@ -57,11 +57,12 @@
             </div>
             <div class="viewer-state" id="hero-state">Input</div>
           </div>
-          <div class="viewer-stage">
-            <img id="hero-image" src="./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/input.jpg" alt="ControlLight hero example" />
-                      </div>
+          <div class="viewer-stage blend-stage">
+            <img class="blend-image blend-base" id="hero-image-base" src="./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/input.jpg" alt="ControlLight hero example" />
+            <img class="blend-image blend-overlay" id="hero-image-overlay" src="./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/alpha_0.25.png" alt="ControlLight hero interpolation overlay" />
+          </div>
           <div class="viewer-controls">
-            <input type="range" min="0" max="4" step="1" value="0" class="apple-slider discrete-slider" id="hero-slider" />
+            <input type="range" min="0" max="100" step="1" value="0" class="apple-slider blend-slider" id="hero-slider" aria-label="Enhancement strength" />
             <div class="slider-ends">
               <span>0</span>
               <span>1</span>
@@ -103,7 +104,7 @@
           <span class="section-chip">Examples</span>
           <h2>20 discrete result galleries</h2>
           <p>
-            The sliders only respond to the five valid states: input, 0.25, 0.50, 0.75, and 1.00. Any other position is intentionally blank.
+            Drag each slider from 0 to 1 to smoothly blend across five real outputs: input, 0.25, 0.50, 0.75, and 1.00.
           </p>
         </div>
         <div class="grid-container" id="gallery-grid"></div>
@@ -133,11 +134,12 @@
           </div>
           <div class="val-indicator">Input</div>
         </div>
-        <div class="image-container">
-          <img class="target-img" alt="" />
-                  </div>
+        <div class="image-container blend-stage">
+          <img class="target-img blend-image blend-base" alt="" />
+          <img class="target-img-overlay blend-image blend-overlay" alt="" />
+        </div>
         <div class="card-footer">
-          <input type="range" min="0" max="4" step="1" value="0" class="apple-slider discrete-slider" />
+          <input type="range" min="0" max="100" step="1" value="0" class="apple-slider blend-slider" aria-label="Enhancement strength" />
           <div class="slider-ends">
             <span>0</span>
             <span>1</span>

@@ -1,5 +1,5 @@
 const galleryData = window.PAPER_GALLERY_DATA || [];
-const STEPS = [
+const FRAMES = [
   { label: 'Input', key: '0' },
   { label: '0.25', key: '25' },
   { label: '0.50', key: '50' },
@@ -8,20 +8,27 @@ const STEPS = [
 ];
 
 function updateSliderFill(slider) {
-  const min = Number(slider.min || 0);
-  const max = Number(slider.max || 4);
-  const value = Number(slider.value || 0);
-  const pct = ((value - min) / (max - min)) * 100;
-  slider.style.setProperty('--pct', `${pct}%`);
+  slider.style.setProperty('--pct', `${Number(slider.value || 0)}%`);
 }
 
-function bindStepViewer({ slider, image, indicator, sample }) {
+function labelForValue(value) {
+  if (value <= 1) return 'Input';
+  return `s = ${(value / 100).toFixed(2)}`;
+}
+
+function bindBlendViewer({ slider, baseImage, overlayImage, indicator, sample }) {
   function sync() {
     updateSliderFill(slider);
-    const index = Math.max(0, Math.min(STEPS.length - 1, Number(slider.value)));
-    const step = STEPS[index];
-    image.src = sample.paths[step.key];
-    indicator.textContent = step.label;
+    const value = Number(slider.value || 0);
+    const position = (value / 100) * (FRAMES.length - 1);
+    const lower = Math.max(0, Math.min(FRAMES.length - 1, Math.floor(position)));
+    const upper = Math.max(0, Math.min(FRAMES.length - 1, Math.ceil(position)));
+    const opacity = upper === lower ? 0 : position - lower;
+
+    baseImage.src = sample.paths[FRAMES[lower].key];
+    overlayImage.src = sample.paths[FRAMES[upper].key];
+    overlayImage.style.opacity = String(opacity);
+    indicator.textContent = labelForValue(value);
   }
 
   slider.addEventListener('input', sync);
@@ -33,9 +40,10 @@ function setupHero() {
   if (!heroSample) return;
   document.getElementById('hero-title').textContent = heroSample.title;
   document.getElementById('hero-subtitle').textContent = heroSample.subtitle;
-  bindStepViewer({
+  bindBlendViewer({
     slider: document.getElementById('hero-slider'),
-    image: document.getElementById('hero-image'),
+    baseImage: document.getElementById('hero-image-base'),
+    overlayImage: document.getElementById('hero-image-overlay'),
     indicator: document.getElementById('hero-state'),
     sample: heroSample,
   });
@@ -49,15 +57,17 @@ function renderGallery() {
     const fragment = template.content.cloneNode(true);
     const title = fragment.querySelector('.card-title');
     const subtitle = fragment.querySelector('.card-subtitle');
-    const image = fragment.querySelector('.target-img');
-    const slider = fragment.querySelector('.discrete-slider');
+    const baseImage = fragment.querySelector('.blend-base');
+    const overlayImage = fragment.querySelector('.blend-overlay');
+    const slider = fragment.querySelector('.blend-slider');
     const indicator = fragment.querySelector('.val-indicator');
 
     title.textContent = sample.title;
     subtitle.textContent = `${sample.subtitle} · ${sample.group}`;
-    image.alt = `${sample.title} sample`;
+    baseImage.alt = `${sample.title} sample`;
+    overlayImage.alt = `${sample.title} blended enhancement overlay`;
 
-    bindStepViewer({ slider, image, indicator, sample });
+    bindBlendViewer({ slider, baseImage, overlayImage, indicator, sample });
     grid.appendChild(fragment);
   });
 }
