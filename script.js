@@ -11,24 +11,16 @@ function updateSliderFill(slider) {
   slider.style.setProperty('--pct', `${Number(slider.value || 0)}%`);
 }
 
-function labelForValue(value) {
-  if (value <= 1) return 'Input';
-  return `s = ${(value / 100).toFixed(2)}`;
+function frameIndexForValue(value) {
+  return Math.max(0, Math.min(FRAMES.length - 1, Math.round((Number(value) / 100) * (FRAMES.length - 1))));
 }
 
-function bindBlendViewer({ slider, baseImage, overlayImage, indicator, sample }) {
+function bindNearestViewer({ slider, image, indicator, sample }) {
   function sync() {
     updateSliderFill(slider);
-    const value = Number(slider.value || 0);
-    const position = (value / 100) * (FRAMES.length - 1);
-    const lower = Math.max(0, Math.min(FRAMES.length - 1, Math.floor(position)));
-    const upper = Math.max(0, Math.min(FRAMES.length - 1, Math.ceil(position)));
-    const opacity = upper === lower ? 0 : position - lower;
-
-    baseImage.src = sample.paths[FRAMES[lower].key];
-    overlayImage.src = sample.paths[FRAMES[upper].key];
-    overlayImage.style.opacity = String(opacity);
-    indicator.textContent = labelForValue(value);
+    const frame = FRAMES[frameIndexForValue(slider.value)];
+    image.src = sample.paths[frame.key];
+    indicator.textContent = frame.label;
   }
 
   slider.addEventListener('input', sync);
@@ -40,10 +32,9 @@ function setupHero() {
   if (!heroSample) return;
   document.getElementById('hero-title').textContent = heroSample.title;
   document.getElementById('hero-subtitle').textContent = heroSample.subtitle;
-  bindBlendViewer({
+  bindNearestViewer({
     slider: document.getElementById('hero-slider'),
-    baseImage: document.getElementById('hero-image-base'),
-    overlayImage: document.getElementById('hero-image-overlay'),
+    image: document.getElementById('hero-image'),
     indicator: document.getElementById('hero-state'),
     sample: heroSample,
   });
@@ -57,17 +48,15 @@ function renderGallery() {
     const fragment = template.content.cloneNode(true);
     const title = fragment.querySelector('.card-title');
     const subtitle = fragment.querySelector('.card-subtitle');
-    const baseImage = fragment.querySelector('.blend-base');
-    const overlayImage = fragment.querySelector('.blend-overlay');
-    const slider = fragment.querySelector('.blend-slider');
+    const image = fragment.querySelector('.target-img');
+    const slider = fragment.querySelector('.result-slider');
     const indicator = fragment.querySelector('.val-indicator');
 
     title.textContent = sample.title;
     subtitle.textContent = `${sample.subtitle} · ${sample.group}`;
-    baseImage.alt = `${sample.title} sample`;
-    overlayImage.alt = `${sample.title} blended enhancement overlay`;
+    image.alt = `${sample.title} sample`;
 
-    bindBlendViewer({ slider, baseImage, overlayImage, indicator, sample });
+    bindNearestViewer({ slider, image, indicator, sample });
     grid.appendChild(fragment);
   });
 }
