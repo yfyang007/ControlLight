@@ -137,16 +137,107 @@ function bindNearestViewer({ slider, image, sample, preloadAll = false }) {
   requestAnimationFrame(applyFrame);
 }
 
+function setupHeroAutoplay({ slider, image, sample, viewer }) {
+  const sequence = [0, 25, 50, 75, 100, 75, 50, 25];
+  const frameMs = 520;
+  const resumeDelayMs = 1700;
+  let sequenceIndex = 0;
+  let timer = 0;
+  let resumeTimer = 0;
+  let playing = true;
+
+  const stopTimer = () => {
+    if (timer) window.clearTimeout(timer);
+    timer = 0;
+  };
+
+  const setFrame = (value) => {
+    slider.value = String(value);
+    updateSliderFill(slider);
+    const frame = nearestFrame(value);
+    const nextSrc = sample.paths[frame.key];
+    if (nextSrc && image.getAttribute('src') !== nextSrc) {
+      image.src = nextSrc;
+    }
+  };
+
+  const tick = () => {
+    if (!playing) return;
+    setFrame(sequence[sequenceIndex]);
+    sequenceIndex = (sequenceIndex + 1) % sequence.length;
+    timer = window.setTimeout(tick, frameMs);
+  };
+
+  const start = () => {
+    if (playing && timer) return;
+    playing = true;
+    stopTimer();
+    tick();
+  };
+
+  const pause = () => {
+    playing = false;
+    stopTimer();
+  };
+
+  const resumeSoon = () => {
+    if (resumeTimer) window.clearTimeout(resumeTimer);
+    resumeTimer = window.setTimeout(start, resumeDelayMs);
+  };
+
+  // Use real pre-decoded still frames instead of an encoded GIF to avoid GIF
+  // palette/dithering artifacts on low-light gradients.
+  Promise.all(FRAMES.map((frame) => preloadImage(sample.paths[frame.key]))).finally(() => {
+    window.setTimeout(start, 260);
+  });
+
+  slider.addEventListener('pointerdown', pause, { passive: true });
+  slider.addEventListener('touchstart', pause, { passive: true });
+  slider.addEventListener('input', () => {
+    pause();
+    sequenceIndex = Math.max(0, sequence.findIndex((value) => value >= Number(slider.value)));
+  }, { passive: true });
+  slider.addEventListener('change', resumeSoon, { passive: true });
+  slider.addEventListener('pointerup', resumeSoon, { passive: true });
+  slider.addEventListener('touchend', resumeSoon, { passive: true });
+
+  if (viewer) {
+    viewer.classList.add('is-autoplayable');
+    viewer.title = 'Click to pause or resume the hero light-control loop';
+    viewer.addEventListener('click', (event) => {
+      if (event.target.closest('.viewer-controls')) return;
+      if (playing) {
+        pause();
+      } else {
+        start();
+      }
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopTimer();
+    } else if (playing) {
+      start();
+    }
+  });
+}
+
 function setupHero() {
   const sample = heroData || galleryData[0];
-  if (!sample) return;
+  const slider = document.getElementById('hero-slider');
+  const image = document.getElementById('hero-image');
+  const viewer = image?.closest('.hero-viewer');
+  if (!sample || !slider || !image) return;
 
   bindNearestViewer({
-    slider: document.getElementById('hero-slider'),
-    image: document.getElementById('hero-image'),
+    slider,
+    image,
     sample,
     preloadAll: true,
   });
+
+  setupHeroAutoplay({ slider, image, sample, viewer });
 }
 
 function renderGalleryBatch(startIndex, batchSize) {
