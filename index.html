@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ControlLight Paper Homepage</title>
+    <title>ControlLight</title>
     <meta
       name="description"
       content="ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement"
@@ -11,130 +11,88 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="brand-block">
-          <span class="paper-chip">CVPR / Project Page</span>
-          <h1>
-            ControlLight: Towards Controllable, Consistent, and
-            <span>Generalizable Low-Light Enhancement</span>
-          </h1>
-          <p class="subtitle">
-            一个面向论文展示的首页原型：顶部讲清论文目标，中部展示
-            pipeline 与 framework，底部用 20 张可交互样例图展示连续可控的增强强度。
-          </p>
-          <div class="hero-links">
-            <a href="#gallery" class="hero-link primary">Interactive Gallery</a>
-            <a href="#pipeline" class="hero-link">Pipeline</a>
-            <a href="#framework" class="hero-link">Framework</a>
-          </div>
-        </div>
-
-        <div class="hero-metrics">
-          <article class="metric-card">
-            <span class="metric-value">20</span>
-            <span class="metric-label">interactive samples</span>
-          </article>
-          <article class="metric-card">
-            <span class="metric-value">10 + 10</span>
-            <span class="metric-label">environment / portrait</span>
-          </article>
-          <article class="metric-card">
-            <span class="metric-value">0 → 1</span>
-            <span class="metric-label">controllable enhancement strength</span>
-          </article>
-        </div>
-      </div>
-    </header>
-
     <main class="page-shell">
-      <section class="overview-panel">
-        <div class="section-heading">
-          <span class="section-chip">Overview</span>
-          <h2>论文首页结构</h2>
-        </div>
-        <div class="overview-grid">
-          <article class="overview-card">
-            <h3>Controllable</h3>
-            <p>
-              通过统一的强度滑杆表达从输入到增强的连续控制轴，让用户一眼看清不同强度下的恢复趋势。
-            </p>
-          </article>
-          <article class="overview-card">
-            <h3>Consistent</h3>
-            <p>
-              在不同亮度区间内尽量保持结构、身份和空间关系稳定，避免增强过程中出现不必要的内容漂移。
-            </p>
-          </article>
-          <article class="overview-card">
-            <h3>Generalizable</h3>
-            <p>
-              同一套展示同时覆盖室内、街景、雨夜、人像、群体与逆光场景，强调方法在多域低照图像上的泛化能力。
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="figure-section" id="pipeline">
-        <div class="section-heading">
-          <span class="section-chip">Pipeline</span>
-          <h2>Method Pipeline</h2>
-          <p>将你提供的论文 pipeline 图直接放在首页核心区，作为方法入口。</p>
-        </div>
-        <div class="figure-card">
-          <img
-            src="./assets/paper_homepage/figures/pipeline.png"
-            alt="ControlLight pipeline figure"
-          />
-        </div>
-      </section>
-
-      <section class="figure-section" id="framework">
-        <div class="section-heading">
-          <span class="section-chip">Framework</span>
-          <h2>Training and Inference Framework</h2>
-          <p>framework 图单独成节，方便论文读者从整体结构切换到模块关系理解。</p>
-        </div>
-        <div class="figure-card">
-          <img
-            src="./assets/paper_homepage/figures/framework.png"
-            alt="ControlLight framework figure"
-          />
-        </div>
-      </section>
-
-      <section class="figure-section" id="real-output">
-        <div class="section-heading">
-          <span class="section-chip">Real Output</span>
-          <h2>Actual ControlLight Comparison GIF</h2>
-          <p>
-            除了滑杆式主页展示，这里补充一张真实推理生成的 comparison GIF，直接展示输入与增强结果的逐强度变化。
+      <section class="hero-section">
+        <div class="hero-copy">
+          <div class="eyebrow">Project Page</div>
+          <h1>ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</h1>
+          <p class="authors">
+            Yufeng Yang<sup>1</sup> &nbsp; Jianzhuang Liu<sup>1,†</sup> &nbsp; Jisheng Chu<sup>1</sup> &nbsp; Yuqi Peng<sup>1</sup>
+            <br />
+            Xianfang Zeng<sup>2</sup> &nbsp; Jiancheng Huang<sup>1</sup> &nbsp; Shifeng Chen<sup>1,‡</sup>
+          </p>
+          <p class="affiliations">
+            <sup>1</sup> Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences
+            <span class="separator">·</span>
+            <sup>2</sup> Zhejiang University
+          </p>
+          <div class="paper-links">
+            <a href="https://yfyang007.github.io/ControlLight/">Project Page</a>
+            <a href="https://huggingface.co/ControlLight/ControlLight">Models</a>
+            <a href="https://huggingface.co/datasets/ControlLight/Light100K">Light100K</a>
+            <a href="https://github.com/yfyang007/ControlLight">Code</a>
+          </div>
+          <p class="hero-description">
+            ControlLight studies low-light enhancement from three complementary perspectives: controllable strength adjustment,
+            consistent structural restoration, and strong generalization across real indoor, street, weather, and portrait scenes.
           </p>
         </div>
-        <div class="figure-card figure-card-narrow">
-          <img
-            src="./assets/paper_homepage/examples/dark_hallway_comparison.gif"
-            alt="Actual ControlLight comparison gif example"
-          />
+      </section>
+
+      <section class="hero-image-section">
+        <img src="./assets/paper_homepage/samples/10_wet_street_night.jpg" alt="ControlLight large visual showcase" />
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-chip">Data Construction</span>
+          <h2>Light100K data construction and controllable supervision design</h2>
+          <p>
+            We build the training data pipeline to support consistent low-light restoration under controllable enhancement strength,
+            enabling the model to learn both visual recovery and explicit intensity modulation.
+          </p>
+        </div>
+        <div class="figure-card">
+          <img src="./assets/paper_homepage/figures/framework.png" alt="ControlLight data construction figure" />
         </div>
       </section>
 
-      <section class="gallery-section" id="gallery">
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-chip">Model Pipeline</span>
+          <h2>ControlLight model pipeline</h2>
+          <p>
+            The model pipeline emphasizes controllable enhancement trajectories, stable restoration behavior, and robust performance
+            across a wide range of low-light image domains.
+          </p>
+        </div>
+        <div class="figure-card">
+          <img src="./assets/paper_homepage/figures/pipeline.png" alt="ControlLight model pipeline figure" />
+        </div>
+      </section>
+
+      <section class="content-section" id="gallery">
         <div class="section-heading">
           <span class="section-chip">Interactive Gallery</span>
-          <h2>20-Image Homepage Showcase</h2>
+          <h2>20 low-light examples</h2>
           <p>
-            使用你给出的苹果风格轻量滑杆样式。每张卡片独立控制，展示同一输入图像在连续增强强度下的视觉趋势。
+            Each card uses the same lightweight strength slider to visualize a continuous enhancement trend on top of a real low-light sample.
           </p>
         </div>
-
-        <div class="gallery-summary">
-          <span>Selected from curated low-light materials</span>
-          <span>10 environments · 10 portraits</span>
-          <span>Warm dark paper-page visual language</span>
-        </div>
-
         <div class="grid-container" id="gallery-grid"></div>
+      </section>
+
+      <section class="content-section citation-section">
+        <div class="section-heading">
+          <span class="section-chip">Citation</span>
+          <h2>BibTeX</h2>
+        </div>
+        <pre class="citation-block"><code>@misc{controllight,
+  title={ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement},
+  author={Yufeng Yang and Jianzhuang Liu and Jisheng Chu and Yuqi Peng and Xianfang Zeng and Jiancheng Huang and Shifeng Chen},
+  howpublished={Project Page},
+  url={https://yfyang007.github.io/ControlLight/}
+}</code></pre>
       </section>
     </main>
 
