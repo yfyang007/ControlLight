@@ -7,6 +7,8 @@ const FRAMES = [
   { label: '1.00', key: '100' },
 ];
 
+const imageCache = new Map();
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -29,18 +31,58 @@ function nearestFrame(value) {
   return FRAMES[index];
 }
 
+function preloadImage(src) {
+  if (!src || imageCache.has(src)) return imageCache.get(src);
+  const image = new Image();
+  image.decoding = 'async';
+  image.src = src;
+  const promise = image.decode ? image.decode().catch(() => undefined) : Promise.resolve();
+  imageCache.set(src, promise);
+  return promise;
+}
+
+function preloadSample(sample) {
+  if (!sample?.paths) return;
+  FRAMES.forEach((frame) => preloadImage(sample.paths[frame.key]));
+}
+
+function primeInitialImages() {
+  galleryData.slice(0, 8).forEach(preloadSample);
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => galleryData.slice(8).forEach(preloadSample), { timeout: 1800 });
+  } else {
+    window.setTimeout(() => galleryData.slice(8).forEach(preloadSample), 400);
+  }
+}
+
 function bindNearestViewer({ slider, image, indicator, sample }) {
   if (!slider || !image || !indicator || !sample) return;
 
-  function sync() {
+  let activeKey = '';
+  let framePending = false;
+
+  function applyFrame() {
+    framePending = false;
     updateSliderFill(slider);
+
     const frame = nearestFrame(slider.value);
-    image.src = sample.paths[frame.key];
-    indicator.textContent = frame.label;
+    const nextSrc = sample.paths[frame.key];
+    if (activeKey !== frame.key) {
+      activeKey = frame.key;
+      if (image.src !== nextSrc) image.src = nextSrc;
+      indicator.textContent = frame.label;
+    }
   }
 
-  slider.addEventListener('input', sync);
-  sync();
+  function scheduleFrame() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(applyFrame);
+  }
+
+  preloadSample(sample);
+  slider.addEventListener('input', scheduleFrame, { passive: true });
+  scheduleFrame();
 }
 
 function setupHero() {
@@ -65,7 +107,8 @@ function renderGallery() {
   const template = document.getElementById('interactive-card-template');
   if (!grid || !template) return;
 
-  galleryData.forEach((sample) => {
+  const fragmentList = document.createDocumentFragment();
+  galleryData.forEach((sample, index) => {
     const fragment = template.content.cloneNode(true);
     const title = fragment.querySelector('.card-title');
     const subtitle = fragment.querySelector('.card-subtitle');
@@ -76,13 +119,17 @@ function renderGallery() {
     title.textContent = sample.title;
     subtitle.textContent = `${sample.subtitle} · ${sample.group}`;
     image.alt = `${sample.title} sample`;
+    image.loading = index < 6 ? 'eager' : 'lazy';
+    image.decoding = 'async';
 
     bindNearestViewer({ slider, image, indicator, sample });
-    grid.appendChild(fragment);
+    fragmentList.appendChild(fragment);
   });
+  grid.appendChild(fragmentList);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  primeInitialImages();
   setupHero();
   renderGallery();
 });
