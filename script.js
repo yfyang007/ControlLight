@@ -7,18 +7,34 @@ const FRAMES = [
   { label: '1.00', key: '100' },
 ];
 
-function updateSliderFill(slider) {
-  slider.style.setProperty('--pct', `${Number(slider.value || 0)}%`);
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
 }
 
-function frameIndexForValue(value) {
-  return Math.max(0, Math.min(FRAMES.length - 1, Math.round((Number(value) / 100) * (FRAMES.length - 1))));
+function sliderPercent(slider) {
+  const min = Number(slider.min || 0);
+  const max = Number(slider.max || 100);
+  const value = Number(slider.value || 0);
+  if (max === min) return 0;
+  return clamp(((value - min) / (max - min)) * 100, 0, 100);
+}
+
+function updateSliderFill(slider) {
+  slider.style.setProperty('--pct', `${sliderPercent(slider)}%`);
+}
+
+function nearestFrame(value) {
+  const percent = clamp(Number(value || 0), 0, 100);
+  const index = clamp(Math.round((percent / 100) * (FRAMES.length - 1)), 0, FRAMES.length - 1);
+  return FRAMES[index];
 }
 
 function bindNearestViewer({ slider, image, indicator, sample }) {
+  if (!slider || !image || !indicator || !sample) return;
+
   function sync() {
     updateSliderFill(slider);
-    const frame = FRAMES[frameIndexForValue(slider.value)];
+    const frame = nearestFrame(slider.value);
     image.src = sample.paths[frame.key];
     indicator.textContent = frame.label;
   }
@@ -30,8 +46,12 @@ function bindNearestViewer({ slider, image, indicator, sample }) {
 function setupHero() {
   const heroSample = galleryData[3] || galleryData[0];
   if (!heroSample) return;
-  document.getElementById('hero-title').textContent = heroSample.title;
-  document.getElementById('hero-subtitle').textContent = heroSample.subtitle;
+
+  const title = document.getElementById('hero-title');
+  const subtitle = document.getElementById('hero-subtitle');
+  if (title) title.textContent = heroSample.title;
+  if (subtitle) subtitle.textContent = heroSample.subtitle;
+
   bindNearestViewer({
     slider: document.getElementById('hero-slider'),
     image: document.getElementById('hero-image'),
@@ -43,6 +63,7 @@ function setupHero() {
 function renderGallery() {
   const grid = document.getElementById('gallery-grid');
   const template = document.getElementById('interactive-card-template');
+  if (!grid || !template) return;
 
   galleryData.forEach((sample) => {
     const fragment = template.content.cloneNode(true);
@@ -61,5 +82,7 @@ function renderGallery() {
   });
 }
 
-setupHero();
-renderGallery();
+document.addEventListener('DOMContentLoaded', () => {
+  setupHero();
+  renderGallery();
+});
