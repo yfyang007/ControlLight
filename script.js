@@ -1,3 +1,4 @@
+const heroData = window.PAPER_HERO_DATA || null;
 const galleryData = window.PAPER_GALLERY_DATA || [];
 const FRAMES = [
   { label: 'Input', key: '0' },
@@ -47,6 +48,7 @@ function preloadSample(sample) {
 }
 
 function primeInitialImages() {
+  if (heroData) preloadSample(heroData);
   galleryData.slice(0, 8).forEach(preloadSample);
   if ('requestIdleCallback' in window) {
     window.requestIdleCallback(() => galleryData.slice(8).forEach(preloadSample), { timeout: 1800 });
@@ -55,8 +57,8 @@ function primeInitialImages() {
   }
 }
 
-function bindNearestViewer({ slider, image, indicator, sample }) {
-  if (!slider || !image || !indicator || !sample) return;
+function bindNearestViewer({ slider, image, sample }) {
+  if (!slider || !image || !sample) return;
 
   let activeKey = '';
   let framePending = false;
@@ -70,7 +72,6 @@ function bindNearestViewer({ slider, image, indicator, sample }) {
     if (activeKey !== frame.key) {
       activeKey = frame.key;
       if (image.src !== nextSrc) image.src = nextSrc;
-      indicator.textContent = frame.label;
     }
   }
 
@@ -86,19 +87,13 @@ function bindNearestViewer({ slider, image, indicator, sample }) {
 }
 
 function setupHero() {
-  const heroSample = galleryData[3] || galleryData[0];
-  if (!heroSample) return;
-
-  const title = document.getElementById('hero-title');
-  const subtitle = document.getElementById('hero-subtitle');
-  if (title) title.textContent = heroSample.title;
-  if (subtitle) subtitle.textContent = heroSample.subtitle;
+  const sample = heroData || galleryData[0];
+  if (!sample) return;
 
   bindNearestViewer({
     slider: document.getElementById('hero-slider'),
     image: document.getElementById('hero-image'),
-    indicator: document.getElementById('hero-state'),
-    sample: heroSample,
+    sample,
   });
 }
 
@@ -110,19 +105,14 @@ function renderGallery() {
   const fragmentList = document.createDocumentFragment();
   galleryData.forEach((sample, index) => {
     const fragment = template.content.cloneNode(true);
-    const title = fragment.querySelector('.card-title');
-    const subtitle = fragment.querySelector('.card-subtitle');
     const image = fragment.querySelector('.target-img');
     const slider = fragment.querySelector('.result-slider');
-    const indicator = fragment.querySelector('.val-indicator');
 
-    title.textContent = sample.title;
-    subtitle.textContent = `${sample.subtitle} · ${sample.group}`;
-    image.alt = `${sample.title} sample`;
+    image.alt = `ControlLight example ${index + 1}`;
     image.loading = index < 6 ? 'eager' : 'lazy';
     image.decoding = 'async';
 
-    bindNearestViewer({ slider, image, indicator, sample });
+    bindNearestViewer({ slider, image, sample });
     fragmentList.appendChild(fragment);
   });
   grid.appendChild(fragmentList);

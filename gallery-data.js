@@ -1,10 +1,24 @@
+window.PAPER_HERO_DATA = {
+  "id": 2,
+  "slug": "002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566",
+  "title": "",
+  "subtitle": "",
+  "group": "",
+  "paths": {
+    "0": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg",
+    "25": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.25.png",
+    "50": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.50.png",
+    "75": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.75.png",
+    "100": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_1.00.png"
+  }
+};
 window.PAPER_GALLERY_DATA = [
   {
     "id": 1,
     "slug": "001_environment_original_pass_candlelit_room_pinterest_b9ad37777529",
-    "title": "Candlelit Room",
-    "subtitle": "Warm candlelit room with controllable indoor relighting",
-    "group": "Environment",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
       "0": "./assets/paper_homepage/results/001_environment_original_pass_candlelit_room_pinterest_b9ad37777529/input.jpg",
       "25": "./assets/paper_homepage/results/001_environment_original_pass_candlelit_room_pinterest_b9ad37777529/alpha_0.25.png",
@@ -14,25 +28,11 @@ window.PAPER_GALLERY_DATA = [
     }
   },
   {
-    "id": 2,
-    "slug": "002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566",
-    "title": "Candlelit Room",
-    "subtitle": "Warm candlelit room with controllable indoor relighting",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg",
-      "25": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 3,
+    "id": 5,
     "slug": "005_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_8862297",
-    "title": "Dark Bedroom",
-    "subtitle": "Low-visibility bedroom restoration under deep shadows",
-    "group": "Environment",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
       "0": "./assets/paper_homepage/results/005_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_8862297/input.jpg",
       "25": "./assets/paper_homepage/results/005_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_8862297/alpha_0.25.png",
@@ -42,11 +42,11 @@ window.PAPER_GALLERY_DATA = [
     }
   },
   {
-    "id": 4,
+    "id": 9,
     "slug": "009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195",
-    "title": "Dark Hallway",
-    "subtitle": "Long hallway enhancement with sparse illumination",
-    "group": "Environment",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
       "0": "./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/input.jpg",
       "25": "./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/alpha_0.25.png",
@@ -56,25 +56,25 @@ window.PAPER_GALLERY_DATA = [
     }
   },
   {
-    "id": 5,
-    "slug": "010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282",
-    "title": "Dark Hallway",
-    "subtitle": "Long hallway enhancement with sparse illumination",
-    "group": "Environment",
+    "id": 11,
+    "slug": "011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
-      "0": "./assets/paper_homepage/results/010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282/input.jpg",
-      "25": "./assets/paper_homepage/results/010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/010_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_14743282/alpha_1.00.png"
+      "0": "./assets/paper_homepage/results/011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528/input.jpg",
+      "25": "./assets/paper_homepage/results/011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/011_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_18893528/alpha_1.00.png"
     }
   },
   {
-    "id": 6,
+    "id": 13,
     "slug": "013_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_13616780",
-    "title": "Dark Living Room",
-    "subtitle": "Recovering texture and structure in dim living rooms",
-    "group": "Environment",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
       "0": "./assets/paper_homepage/results/013_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_13616780/input.jpg",
       "25": "./assets/paper_homepage/results/013_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_13616780/alpha_0.25.png",
@@ -84,199 +84,213 @@ window.PAPER_GALLERY_DATA = [
     }
   },
   {
-    "id": 7,
-    "slug": "017_environment_original_pass_dark_street_pinterest_3b122deafe3c",
-    "title": "Dark Street",
-    "subtitle": "Night street recovery with restrained highlight lifting",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/017_environment_original_pass_dark_street_pinterest_3b122deafe3c/input.jpg",
-      "25": "./assets/paper_homepage/results/017_environment_original_pass_dark_street_pinterest_3b122deafe3c/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/017_environment_original_pass_dark_street_pinterest_3b122deafe3c/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/017_environment_original_pass_dark_street_pinterest_3b122deafe3c/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/017_environment_original_pass_dark_street_pinterest_3b122deafe3c/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 8,
-    "slug": "021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032",
-    "title": "Dim Room",
-    "subtitle": "Smooth enhancement in enclosed dim indoor scenes",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032/input.jpg",
-      "25": "./assets/paper_homepage/results/021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/021_environment_pexels_low_light_diverse_1024_dim_room_pexels_13807032/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 9,
-    "slug": "025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247",
-    "title": "Foggy Night Street",
-    "subtitle": "Visibility improvement while keeping haze natural",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247/input.jpg",
-      "25": "./assets/paper_homepage/results/025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/025_environment_pexels_low_light_diverse_1024_foggy_night_street_pexels_14464247/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 10,
-    "slug": "029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640",
-    "title": "Low Light Interior",
-    "subtitle": "General interior low-light reconstruction",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640/input.jpg",
-      "25": "./assets/paper_homepage/results/029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/029_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_31359640/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 11,
-    "slug": "033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4",
-    "title": "Low Light Street",
-    "subtitle": "Controlled restoration for urban low-light streets",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4/input.jpg",
-      "25": "./assets/paper_homepage/results/033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/033_environment_original_pass_low_light_street_pinterest_01dde3b67fb4/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 12,
-    "slug": "037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958",
-    "title": "Night Alley",
-    "subtitle": "Dark alley relighting with preserved local contrast",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958/input.jpg",
-      "25": "./assets/paper_homepage/results/037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/037_environment_pexels_low_light_diverse_1024_night_alley_pexels_5948958/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 13,
-    "slug": "041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381",
-    "title": "Night Street",
-    "subtitle": "Generalizable night street enhancement",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381/input.jpg",
-      "25": "./assets/paper_homepage/results/041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/041_environment_pexels_low_light_diverse_1024_night_street_pexels_6412381/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 14,
-    "slug": "045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733",
-    "title": "Street Lamp Night",
-    "subtitle": "Street-lamp scene with local light source preservation",
-    "group": "Environment",
-    "paths": {
-      "0": "./assets/paper_homepage/results/045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733/input.jpg",
-      "25": "./assets/paper_homepage/results/045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/045_environment_pexels_low_light_diverse_1024_street_lamp_night_pexels_34014733/alpha_1.00.png"
-    }
-  },
-  {
     "id": 15,
-    "slug": "048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854",
-    "title": "Wet Street Night",
-    "subtitle": "Rainy reflective surface restoration at night",
-    "group": "Environment",
+    "slug": "015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
-      "0": "./assets/paper_homepage/results/048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854/input.jpg",
-      "25": "./assets/paper_homepage/results/048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/048_environment_pexels_low_light_diverse_1024_wet_street_night_pexels_12476854/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 16,
-    "slug": "lowlight_0001",
-    "title": "Lowlight 0001",
-    "subtitle": "RealIR-Bench example for real low-light enhancement.",
-    "group": "RealIR-Bench",
-    "paths": {
-      "0": "./assets/paper_homepage/results/lowlight_0001/input.jpg",
-      "25": "./assets/paper_homepage/results/lowlight_0001/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/lowlight_0001/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/lowlight_0001/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/lowlight_0001/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 17,
-    "slug": "lowlight_0002",
-    "title": "Lowlight 0002",
-    "subtitle": "RealIR-Bench example for illumination recovery.",
-    "group": "RealIR-Bench",
-    "paths": {
-      "0": "./assets/paper_homepage/results/lowlight_0002/input.jpg",
-      "25": "./assets/paper_homepage/results/lowlight_0002/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/lowlight_0002/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/lowlight_0002/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/lowlight_0002/alpha_1.00.png"
-    }
-  },
-  {
-    "id": 18,
-    "slug": "lowlight_0003",
-    "title": "Lowlight 0003",
-    "subtitle": "RealIR-Bench example with smooth intensity control.",
-    "group": "RealIR-Bench",
-    "paths": {
-      "0": "./assets/paper_homepage/results/lowlight_0003/input.jpg",
-      "25": "./assets/paper_homepage/results/lowlight_0003/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/lowlight_0003/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/lowlight_0003/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/lowlight_0003/alpha_1.00.png"
+      "0": "./assets/paper_homepage/results/015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270/input.jpg",
+      "25": "./assets/paper_homepage/results/015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/015_environment_pexels_low_light_diverse_1024_dark_living_room_pexels_14072270/alpha_1.00.png"
     }
   },
   {
     "id": 19,
-    "slug": "lowlight_0004",
-    "title": "Lowlight 0004",
-    "subtitle": "RealIR-Bench example for detail and tone balancing.",
-    "group": "RealIR-Bench",
+    "slug": "019_environment_pexels_dark_street_1024_dark_street_pexels_19286572",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
-      "0": "./assets/paper_homepage/results/lowlight_0004/input.jpg",
-      "25": "./assets/paper_homepage/results/lowlight_0004/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/lowlight_0004/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/lowlight_0004/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/lowlight_0004/alpha_1.00.png"
+      "0": "./assets/paper_homepage/results/019_environment_pexels_dark_street_1024_dark_street_pexels_19286572/input.jpg",
+      "25": "./assets/paper_homepage/results/019_environment_pexels_dark_street_1024_dark_street_pexels_19286572/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/019_environment_pexels_dark_street_1024_dark_street_pexels_19286572/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/019_environment_pexels_dark_street_1024_dark_street_pexels_19286572/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/019_environment_pexels_dark_street_1024_dark_street_pexels_19286572/alpha_1.00.png"
     }
   },
   {
-    "id": 20,
-    "slug": "lowlight_0005",
-    "title": "Lowlight 0005",
-    "subtitle": "RealIR-Bench example for robust scene generalization.",
-    "group": "RealIR-Bench",
+    "id": 23,
+    "slug": "023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475",
+    "title": "",
+    "subtitle": "",
+    "group": "",
     "paths": {
-      "0": "./assets/paper_homepage/results/lowlight_0005/input.jpg",
-      "25": "./assets/paper_homepage/results/lowlight_0005/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/lowlight_0005/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/lowlight_0005/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/lowlight_0005/alpha_1.00.png"
+      "0": "./assets/paper_homepage/results/023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475/input.jpg",
+      "25": "./assets/paper_homepage/results/023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/023_environment_pexels_low_light_diverse_1024_dim_room_pexels_15447475/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 31,
+    "slug": "031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455/input.jpg",
+      "25": "./assets/paper_homepage/results/031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/031_environment_pexels_low_light_diverse_1024_low_light_interior_pexels_7638455/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 35,
+    "slug": "035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110/input.jpg",
+      "25": "./assets/paper_homepage/results/035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/035_environment_pexels_low_light_diverse_1024_low_light_street_pexels_16375110/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 4,
+    "slug": "004_environment_original_pass_candlelit_room_pinterest_7197178a6d94",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/004_environment_original_pass_candlelit_room_pinterest_7197178a6d94/input.jpg",
+      "25": "./assets/paper_homepage/results/004_environment_original_pass_candlelit_room_pinterest_7197178a6d94/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/004_environment_original_pass_candlelit_room_pinterest_7197178a6d94/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/004_environment_original_pass_candlelit_room_pinterest_7197178a6d94/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/004_environment_original_pass_candlelit_room_pinterest_7197178a6d94/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684/input.jpg",
+      "25": "./assets/paper_homepage/results/006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/006_environment_pexels_low_light_diverse_1024_dark_bedroom_pexels_15501684/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 8,
+    "slug": "008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a/input.jpg",
+      "25": "./assets/paper_homepage/results/008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/008_environment_original_pass_dark_bedroom_pinterest_3ee8f13ad47a/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 92,
+    "slug": "092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/input.jpg",
+      "25": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 80,
+    "slug": "080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368/input.jpg",
+      "25": "./assets/paper_homepage/results/080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/080_portrait_pexels_low_light_diverse_1024_moody_portrait_pexels_16168368/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 72,
+    "slug": "072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261/input.jpg",
+      "25": "./assets/paper_homepage/results/072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/072_portrait_pexels_low_light_diverse_1024_lonely_person_night_pexels_29072261/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 68,
+    "slug": "068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449/input.jpg",
+      "25": "./assets/paper_homepage/results/068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/068_portrait_pexels_low_light_diverse_1024_dark_portrait_pexels_6705449/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 64,
+    "slug": "064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974/input.jpg",
+      "25": "./assets/paper_homepage/results/064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/064_portrait_pexels_low_light_diverse_1024_couple_night_pexels_12379974/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 60,
+    "slug": "060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204/input.jpg",
+      "25": "./assets/paper_homepage/results/060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/060_portrait_pexels_low_light_diverse_1024_cinematic_portrait_pexels_14708204/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 52,
+    "slug": "052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/input.jpg",
+      "25": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_1.00.png"
     }
   }
 ];
