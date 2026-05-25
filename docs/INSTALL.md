@@ -34,7 +34,7 @@ bash -lc 'source scripts/project_env.sh; python run.py --help >/dev/null'
 
 Use the same environment for both prediction and training:
 
-- `aitoolkit`
+- `controlight`
 
 The shared bootstrap script is:
 

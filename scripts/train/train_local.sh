@@ -5,7 +5,7 @@ set -euo pipefail
 #
 # Optional overrides:
 #   REPO_ROOT=/path/to/controllight
-#   CONDA_ENV=aitoolkit
+#   CONDA_ENV=controlight
 #   CONDA_SH=/path/to/conda.sh
 #   RUN_NAME=my_experiment
 #   CONFIG=config/train_flux2klein_lora.yaml
@@ -16,7 +16,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="${REPO_ROOT:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"
 RUN_NAME="${RUN_NAME:-controllight_lora_train}"
-CONDA_ENV="${CONDA_ENV:-aitoolkit}"
+CONDA_ENV="${CONDA_ENV:-controlight}"
 CONFIG="${CONFIG:-${REPO_ROOT}/config/train_flux2klein_lora.yaml}"
 CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
 NUM_PROCESSES="${NUM_PROCESSES:-4}"

@@ -7,13 +7,13 @@ set -euo pipefail
 # - If the caller already has an active virtualenv, respect it. This keeps
 #   standalone packaging/venv smoke tests isolated.
 # - Otherwise, fall back to the project default conda environment:
-#   `aitoolkit`. We intentionally do not auto-respect an arbitrary active
+#   `controlight`. We intentionally do not auto-respect an arbitrary active
 #   conda env, because users often invoke the wrappers from a base shell that
 #   has incompatible package versions.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="${REPO_ROOT:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
-DEFAULT_CONDA_ENV="${DEFAULT_CONDA_ENV:-aitoolkit}"
+DEFAULT_CONDA_ENV="${DEFAULT_CONDA_ENV:-controlight}"
 if [[ -z "${CONDA_ENV+x}" ]]; then
   if [[ -n "${VIRTUAL_ENV:-}" ]]; then
     CONDA_ENV=""

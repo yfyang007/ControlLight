@@ -8,7 +8,7 @@ set -euo pipefail
 #   GPUS=0,1,2,3
 #   NUM_PROCESSES=4
 #   MAIN_PROCESS_PORT=29571
-#   CONDA_ENV=aitoolkit
+#   CONDA_ENV=controlight
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="${REPO_ROOT:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"

@@ -1,46 +1,54 @@
-# ControlLight
+<div align="center">
+  <h2><a href="https://arxiv.org/abs/0000.00000">ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</a></h2>
+  <p>
+    <a href="https://yfyang007.github.io/ControlLight/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"/></a>
+    <a href="https://arxiv.org/abs/0000.00000"><img src="https://img.shields.io/badge/arXiv-coming--soon-b31b1b.svg" alt="arXiv Paper"/></a>
+    <a href="https://huggingface.co/ControlLight/ControlLight"><img src="https://img.shields.io/badge/HuggingFace-Models-yellow.svg" alt="Hugging Face Models"/></a>
+    <a href="https://huggingface.co/datasets/ControlLight/Light100K"><img src="https://img.shields.io/badge/HuggingFace-Light100K-green.svg" alt="Light100K Dataset"/></a>
+    <a href="https://github.com/yfyang007/ControlLight"><img src="https://img.shields.io/badge/GitHub-Code-black.svg" alt="GitHub Code"/></a>
+  </p>
+</div>
 
-ControlLight is a FLUX.2-Klein LoRA project for low-light enhancement.
+<p align="center">
+  <img src="assets/teaser.png" alt="ControlLight teaser" width="100%"/>
+</p>
 
-This repository contains:
+## News
 
-- public inference entrypoints
-- public training entrypoints
-- vendored local `diffusers/` integration required by ControlLight
-- vendored training stack (`run.py`, `jobs/`, `toolkit/`, `extensions/`)
+- [2026/05/25] We have released the [ControlLight model weights](https://huggingface.co/ControlLight/ControlLight) on Hugging Face.
+- [2026/05/25] We have released [Light100K](https://huggingface.co/datasets/ControlLight/Light100K), a continuous low-light enhancement dataset for controllable illumination learning.
+- [2026/05/25] We have released the ControlLight inference and training code.
 
-It does not bundle large runtime assets such as datasets, base models, or output results.
+## TODO
 
-## Teaser
+- [x] Open-source the inference scripts.
+- [x] Open-source the training scripts.
+- [x] Release Light100K on Hugging Face.
+- [x] Open-source the ControlLight model weights.
+- [ ] Release the bidirectional light-control model.
 
-[Project teaser PDF](assets/teaser.pdf)
+## Quick Start
 
-The repository default is code-first. The teaser is included as a lightweight project summary, while the main entrypoint remains the source tree and README instructions below.
+### 1. Installation
 
-## Environment
+This project relies on the patched local `diffusers/` checkout in this repository and uses a unified `controlight` environment for inference and training.
 
-Use one environment for both inference and training:
-
-- `aitoolkit`
-
-The shared bootstrap script is:
-
-- `scripts/project_env.sh`
-
-The shell wrappers activate `aitoolkit` automatically.
-
-## Installation
-
-See also: [`docs/INSTALL.md`](docs/INSTALL.md)
+- Python: `3.12` is recommended.
+- Base model: [black-forest-labs/FLUX.2-klein-base-9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B).
+- ControlLight LoRA: [ControlLight/ControlLight](https://huggingface.co/ControlLight/ControlLight).
+- Dataset: [ControlLight/Light100K](https://huggingface.co/datasets/ControlLight/Light100K).
 
 ```bash
+conda create -n controlight python=3.12 -y
+conda activate controlight
+
 python -m pip install --upgrade pip
 python -m pip install -e diffusers
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
-Quick verification:
+You can verify the environment with:
 
 ```bash
 bash scripts/predict.sh --help
@@ -48,22 +56,36 @@ bash scripts/demo.sh --help
 bash -lc 'source scripts/project_env.sh; python run.py --help >/dev/null'
 ```
 
-## Required external assets
+### 2. Prepare Models
 
-You must provide these yourself:
+Download or place the required model assets under `models/` or provide explicit paths through command-line arguments.
 
-- FLUX.2-Klein base model directory
-- ControlLight LoRA checkpoint
-- training dataset, if you want to train
+```text
+models/
+  FLUX.2-klein-base-9B/      # FLUX.2 [klein] 9B base model
+  controllight.safetensors   # ControlLight LoRA checkpoint
+  flux2_vae/ae.safetensors   # VAE path used by the training config, if needed
+```
 
-Typical examples:
+The default public training config uses `./models/FLUX.2-klein-base-9B`. You can also pass:
 
-- `--model-path /path/to/FLUX.2-klein-base-9B`
-- `--lora-path /path/to/controllight.safetensors`
+```bash
+--model-path /path/to/FLUX.2-klein-base-9B
+--lora-path /path/to/controllight.safetensors
+```
 
-## Inference entrypoints
+### 3. Recommended Inference Config
 
-### 1. Predict one image
+- Device: `cuda`
+- Torch dtype: `bfloat16`
+- Inference steps: `20`
+- Guidance scale: `1.0`
+- Recommended seed: `42`
+- Enhancement strength: `alpha` in `[0, 1]`, where larger values produce stronger low-light enhancement.
+
+## ControlLight Inference
+
+### Single Image
 
 ```bash
 bash scripts/predict.sh predict-image \
@@ -71,7 +93,7 @@ bash scripts/predict.sh predict-image \
   --output /path/to/output.png \
   --model-path /path/to/FLUX.2-klein-base-9B \
   --lora-path /path/to/controllight.safetensors \
-  --alpha 0.54 \
+  --alpha 0.50 \
   --num-inference-steps 20 \
   --guidance-scale 1.0 \
   --seed 42 \
@@ -79,14 +101,9 @@ bash scripts/predict.sh predict-image \
   --torch-dtype bfloat16
 ```
 
-### 2. Fixed four-strength sweep
+### Four-Strength Sweep
 
-Runs the public four-strength sweep:
-
-- `0.25`
-- `0.50`
-- `0.75`
-- `1.00`
+The public sweep generates controllable enhancement results at `0.25`, `0.50`, `0.75`, and `1.00`.
 
 ```bash
 bash scripts/predict.sh predict-four \
@@ -100,7 +117,7 @@ bash scripts/predict.sh predict-four \
   --torch-dtype bfloat16
 ```
 
-### 3. Custom strength sweep
+### Custom Strength Sweep
 
 ```bash
 bash scripts/predict.sh predict-strengths \
@@ -115,22 +132,21 @@ bash scripts/predict.sh predict-strengths \
   --torch-dtype bfloat16
 ```
 
-`predict-four` and `predict-strengths` accept either:
+`predict-four` and `predict-strengths` accept either a plain image directory or a `design_materials` root containing `sources/`.
 
-- a plain image directory
-- a `design_materials` root containing `sources/`
+The batch output contains:
 
-Outputs include:
+```text
+manifest.json
+sources/<slug>.png
+results/<slug>/input.jpg
+results/<slug>/grid.jpg
+results/<slug>/comparison.gif
+results/<slug>/outputs/*.png
+results/<slug>/metadata.json
+```
 
-- `manifest.json`
-- `sources/<slug>.png`
-- `results/<slug>/input.jpg`
-- `results/<slug>/grid.jpg`
-- `results/<slug>/comparison.gif`
-- `results/<slug>/outputs/*.png`
-- `results/<slug>/metadata.json`
-
-## Demo
+## Local Demo
 
 ```bash
 bash scripts/demo.sh \
@@ -144,38 +160,81 @@ bash scripts/demo.sh \
 
 ## Training
 
+ControlLight is trained as a LoRA on top of FLUX.2 [klein] 9B with continuous low-light enhancement supervision from Light100K.
+
+### Dataset Configuration
+
+Download [Light100K](https://huggingface.co/datasets/ControlLight/Light100K) and organize the training subset according to the paths used by `config/train_flux2klein_lora.yaml`.
+
+The default config expects:
+
+```text
+datasets/flux2klein_alpha_interp5_20260501_unified_edgeexp/
+  control/
+  mask_normrgb_l01/
+  mask_normrgb_l02/
+  mask_normrgb_l03/
+  mask_normrgb_l04/
+  mask_normrgb_l05/
+  target_l01/
+  target_l02/
+  target_l03/
+  target_l04/
+  target_l05/
+```
+
+Each `target_lXX` folder corresponds to one enhancement level. The training config maps these levels to LoRA network weights from `0.2` to `1.0`, while `control/` stores the original low-light inputs and `mask_normrgb_lXX/` stores the corresponding light-control masks.
+
+If your dataset root differs, duplicate `config/train_flux2klein_lora.yaml` and update `folder_path`, `control_path`, and `mask_path`.
+
+### Training Scripts
+
 Main config:
 
 - `config/train_flux2klein_lora.yaml`
 
-Public training scripts:
+Public training entrypoints:
 
 - `scripts/train/train_local.sh`
 - `scripts/train/train_multigpu.sh`
 - `scripts/train/train_watchdog.sh`
 
-Prepare your dataset yourself so it matches the directory layout expected by the training config. For open-source use, this is simpler than shipping a repository-specific link helper.
-
-Typical local training:
+Local or default multi-GPU launch:
 
 ```bash
 bash scripts/train/train_local.sh
 ```
 
-Distributed launch:
+Explicit distributed launch:
 
 ```bash
 CONFIG=./config/train_flux2klein_lora.yaml \
 GPUS=0,1,2,3 \
 NUM_PROCESSES=4 \
+MAIN_PROCESS_PORT=30000 \
 bash scripts/train/train_multigpu.sh
 ```
 
-More detail:
+Keep training alive with automatic resume:
 
-- [`scripts/train/README.md`](scripts/train/README.md)
+```bash
+bash scripts/train/train_watchdog.sh
+```
 
-## Repository layout
+Useful overrides:
+
+```bash
+RUN_NAME=my_controllight_run \
+CONFIG=./config/train_flux2klein_lora.yaml \
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+NUM_PROCESSES=4 \
+CONDA_ENV=controlight \
+bash scripts/train/train_local.sh
+```
+
+More details are available in [`scripts/train/README.md`](scripts/train/README.md).
+
+## Repository Layout
 
 ```text
 ControlLight/           Python package and public CLIs
@@ -190,4 +249,20 @@ toolkit/                Core training and inference helpers
 predict.py              Public prediction entrypoint
 serve_demo.py           Public local demo entrypoint
 run.py                  Training launcher
+```
+
+## Citation
+
+If you find ControlLight useful in your research, please star and cite:
+
+```bibtex
+@misc{yang2026controllight,
+      title={ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement},
+      author={Yufeng Yang and Jianzhuang Liu and Jisheng Chu and Yuqi Peng and Xianfang Zeng and Jiancheng Huang and Shifeng Chen},
+      year={2026},
+      eprint={0000.00000},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/0000.00000},
+}
 ```

@@ -18,7 +18,7 @@ This folder now exposes a small set of public, easier-to-read entrypoints.
 
 Prediction and training now default to the same conda environment:
 
-- `aitoolkit`
+- `controlight`
 
 The shared bootstrap lives at:
 
@@ -70,7 +70,7 @@ All scripts accept configuration through environment variables. The most useful 
 - `CUDA_VISIBLE_DEVICES` or `GPUS`
 - `NUM_PROCESSES`
 - `MAIN_PROCESS_PORT`
-- `CONDA_ENV` and `CONDA_SH` if you need to override the default `aitoolkit` environment
+- `CONDA_ENV` and `CONDA_SH` if you need to override the default `controlight` environment
 
 Example:
 
