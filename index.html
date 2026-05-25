@@ -46,12 +46,11 @@
 
       <section class="hero-slider-section">
         <div class="section-heading compact-heading">
-          <span class="section-chip">Hero Showcase</span>
-          <h2>Discrete controllable enhancement on a real example</h2>
+          <h2>Linear light control</h2>
         </div>
         <div class="hero-viewer card-surface">
           <div class="viewer-stage">
-            <img id="hero-image" src="./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg" alt="ControlLight hero example" />
+            <img id="hero-image" src="./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg" alt="ControlLight hero example" fetchpriority="high" decoding="async" />
           </div>
           <div class="viewer-controls">
             <input type="range" min="0" max="100" step="1" value="0" class="apple-slider result-slider" id="hero-slider" aria-label="Enhancement strength" />
@@ -66,10 +65,10 @@
       <section class="content-section">
         <div class="section-heading">
           <span class="section-chip">Data Pipeline</span>
-          <h2>Light100K data pipeline</h2>
+          <h2>Light100K Data Construction</h2>
           <p>
-            This pipeline illustrates the construction process of Light100K, including low-light source collection, filtering,
-            restoration supervision, and controllable strength organization.
+            We construct Light100K, a continuous low-light enhancement dataset containing training
+            groups, providing fine-grained supervision for controllable low-light enhancement.
           </p>
         </div>
         <div class="figure-card card-surface">
@@ -80,7 +79,7 @@
       <section class="content-section" id="gallery">
         <div class="section-heading">
           <span class="section-chip">Examples</span>
-          <h2>20 result galleries</h2>
+          <h2>Galleries</h2>
         </div>
         <div class="grid-container" id="gallery-grid"></div>
       </section>
