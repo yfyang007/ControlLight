@@ -16,9 +16,10 @@
         <div class="hero-copy">
           <div class="eyebrow">Project Page</div>
           <h1>ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</h1>
-          <p class="authors">
+          <p class="authors authors-line-1">
             Yufeng Yang<sup>1</sup> &nbsp; Jianzhuang Liu<sup>1,†</sup> &nbsp; Jisheng Chu<sup>1</sup> &nbsp; Yuqi Peng<sup>1</sup>
-            <br />
+          </p>
+          <p class="authors authors-line-2">
             Xianfang Zeng<sup>2</sup> &nbsp; Jiancheng Huang<sup>1</sup> &nbsp; Shifeng Chen<sup>1,‡</sup>
           </p>
           <p class="affiliations">
@@ -27,20 +28,54 @@
             <sup>2</sup> Zhejiang University
           </p>
           <div class="paper-links">
-            <a href="https://yfyang007.github.io/ControlLight/">Project Page</a>
-            <a href="https://huggingface.co/ControlLight/ControlLight">Models</a>
-            <a href="https://huggingface.co/datasets/ControlLight/Light100K">Light100K</a>
-            <a href="https://github.com/yfyang007/ControlLight">Code</a>
+            <a href="https://yfyang007.github.io/ControlLight/" class="link-pill">
+              <span class="icon">⌂</span><span>Project Page</span>
+            </a>
+            <a href="https://huggingface.co/ControlLight/ControlLight" class="link-pill">
+              <span class="icon">◈</span><span>Models</span>
+            </a>
+            <a href="https://huggingface.co/datasets/ControlLight/Light100K" class="link-pill">
+              <span class="icon">▣</span><span>Light100K</span>
+            </a>
+            <a href="https://github.com/yfyang007/ControlLight" class="link-pill">
+              <span class="icon">⌘</span><span>Code</span>
+            </a>
           </div>
-          <p class="hero-description">
-            ControlLight studies low-light enhancement from three complementary perspectives: controllable strength adjustment,
-            consistent structural restoration, and strong generalization across real indoor, street, weather, and portrait scenes.
-          </p>
         </div>
       </section>
 
-      <section class="hero-image-section">
-        <img src="./assets/paper_homepage/samples/10_wet_street_night.jpg" alt="ControlLight large visual showcase" />
+      <section class="hero-slider-section">
+        <div class="section-heading compact-heading">
+          <span class="section-chip">Hero Showcase</span>
+          <h2>Discrete controllable enhancement on a real example</h2>
+        </div>
+        <div class="hero-viewer card-surface">
+          <div class="viewer-topbar">
+            <div>
+              <p class="viewer-title" id="hero-title">Dark Hallway</p>
+              <p class="viewer-subtitle" id="hero-subtitle">Long hallway enhancement with sparse illumination</p>
+            </div>
+            <div class="viewer-state" id="hero-state">Input</div>
+          </div>
+          <div class="viewer-stage">
+            <img id="hero-image" src="./assets/paper_homepage/results/009_environment_pexels_low_light_diverse_1024_dark_hallway_pexels_30388195/input.jpg" alt="ControlLight hero example" />
+            <div class="viewer-blank hidden" id="hero-blank">No frame at this slider position</div>
+          </div>
+          <div class="viewer-controls">
+            <div class="slider-label-group">
+              <span>Discrete Enhancement Slider</span>
+              <span>Input / 0.25 / 0.50 / 0.75 / 1.00 only</span>
+            </div>
+            <input type="range" min="0" max="100" value="0" class="apple-slider discrete-slider" id="hero-slider" />
+            <div class="slider-ticks">
+              <span>0</span>
+              <span>0.25</span>
+              <span>0.50</span>
+              <span>0.75</span>
+              <span>1.00</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="content-section">
@@ -48,11 +83,11 @@
           <span class="section-chip">Data Construction</span>
           <h2>Light100K data construction and controllable supervision design</h2>
           <p>
-            We build the training data pipeline to support consistent low-light restoration under controllable enhancement strength,
-            enabling the model to learn both visual recovery and explicit intensity modulation.
+            We build a large-scale low-light data pipeline that supports explicit enhancement control, stable structure recovery,
+            and generalizable restoration learning across diverse real scenes.
           </p>
         </div>
-        <div class="figure-card">
+        <div class="figure-card card-surface">
           <img src="./assets/paper_homepage/figures/framework.png" alt="ControlLight data construction figure" />
         </div>
       </section>
@@ -62,21 +97,21 @@
           <span class="section-chip">Model Pipeline</span>
           <h2>ControlLight model pipeline</h2>
           <p>
-            The model pipeline emphasizes controllable enhancement trajectories, stable restoration behavior, and robust performance
-            across a wide range of low-light image domains.
+            ControlLight introduces a controllable enhancement axis while maintaining consistent restoration behavior and strong
+            generalization across indoor, urban, weather, and benchmark low-light settings.
           </p>
         </div>
-        <div class="figure-card">
+        <div class="figure-card card-surface">
           <img src="./assets/paper_homepage/figures/pipeline.png" alt="ControlLight model pipeline figure" />
         </div>
       </section>
 
       <section class="content-section" id="gallery">
         <div class="section-heading">
-          <span class="section-chip">Interactive Gallery</span>
-          <h2>20 low-light examples</h2>
+          <span class="section-chip">Examples</span>
+          <h2>20 discrete result galleries</h2>
           <p>
-            Each card uses the same lightweight strength slider to visualize a continuous enhancement trend on top of a real low-light sample.
+            The sliders only respond to the five valid states: input, 0.25, 0.50, 0.75, and 1.00. Any other position is intentionally blank.
           </p>
         </div>
         <div class="grid-container" id="gallery-grid"></div>
@@ -87,9 +122,10 @@
           <span class="section-chip">Citation</span>
           <h2>BibTeX</h2>
         </div>
-        <pre class="citation-block"><code>@misc{controllight,
+        <pre class="citation-block"><code>@misc{controllight2026,
   title={ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement},
   author={Yufeng Yang and Jianzhuang Liu and Jisheng Chu and Yuqi Peng and Xianfang Zeng and Jiancheng Huang and Shifeng Chen},
+  year={2026},
   howpublished={Project Page},
   url={https://yfyang007.github.io/ControlLight/}
 }</code></pre>
@@ -97,23 +133,31 @@
     </main>
 
     <template id="interactive-card-template">
-      <article class="interactive-card">
+      <article class="interactive-card card-surface">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-title"></span>
             <span class="card-subtitle"></span>
           </div>
-          <div class="val-indicator">s = 0.50</div>
+          <div class="val-indicator">Input</div>
         </div>
         <div class="image-container">
           <img class="target-img" alt="" />
+          <div class="viewer-blank hidden card-blank">No frame at this slider position</div>
         </div>
         <div class="card-footer">
           <div class="slider-label-group">
-            <span>Enhancement Strength</span>
-            <span>s = 0.00 → 1.00</span>
+            <span>Discrete Strength</span>
+            <span>0 / 0.25 / 0.50 / 0.75 / 1.00</span>
           </div>
-          <input type="range" min="0" max="100" value="50" class="apple-slider" />
+          <input type="range" min="0" max="100" value="0" class="apple-slider discrete-slider" />
+          <div class="slider-ticks">
+            <span>0</span>
+            <span>0.25</span>
+            <span>0.50</span>
+            <span>0.75</span>
+            <span>1.00</span>
+          </div>
         </div>
       </article>
     </template>
