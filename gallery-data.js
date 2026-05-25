@@ -1,15 +1,15 @@
 window.PAPER_HERO_DATA = {
-  "id": 2,
-  "slug": "002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566",
+  "id": 92,
+  "slug": "092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652",
   "title": "",
   "subtitle": "",
   "group": "",
   "paths": {
-    "0": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg",
-    "25": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.25.png",
-    "50": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.50.png",
-    "75": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.75.png",
-    "100": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_1.00.png"
+    "0": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/input.jpg",
+    "25": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.25.png",
+    "50": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.50.png",
+    "75": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.75.png",
+    "100": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_1.00.png"
   }
 };
 window.PAPER_GALLERY_DATA = [
@@ -196,17 +196,17 @@ window.PAPER_GALLERY_DATA = [
     }
   },
   {
-    "id": 92,
-    "slug": "092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652",
+    "id": 2,
+    "slug": "002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566",
     "title": "",
     "subtitle": "",
     "group": "",
     "paths": {
-      "0": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/input.jpg",
-      "25": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.25.png",
-      "50": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.50.png",
-      "75": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_0.75.png",
-      "100": "./assets/paper_homepage/results/092_portrait_pexels_low_light_diverse_1024_shadow_portrait_pexels_20344652/alpha_1.00.png"
+      "0": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/input.jpg",
+      "25": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/002_environment_pexels_low_light_diverse_1024_candlelit_room_pexels_4547566/alpha_1.00.png"
     }
   },
   {
@@ -291,6 +291,20 @@ window.PAPER_GALLERY_DATA = [
       "50": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_0.50.png",
       "75": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_0.75.png",
       "100": "./assets/paper_homepage/results/052_portrait_pexels_low_light_diverse_1024_backlit_portrait_pexels_9509030/alpha_1.00.png"
+    }
+  },
+  {
+    "id": 24,
+    "slug": "024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440",
+    "title": "",
+    "subtitle": "",
+    "group": "",
+    "paths": {
+      "0": "./assets/paper_homepage/results/024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440/input.jpg",
+      "25": "./assets/paper_homepage/results/024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440/alpha_0.25.png",
+      "50": "./assets/paper_homepage/results/024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440/alpha_0.50.png",
+      "75": "./assets/paper_homepage/results/024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440/alpha_0.75.png",
+      "100": "./assets/paper_homepage/results/024_environment_pexels_low_light_diverse_1024_dim_room_pexels_11923440/alpha_1.00.png"
     }
   }
 ];
