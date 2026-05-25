@@ -1,30 +1,26 @@
 const galleryData = window.PAPER_GALLERY_DATA || [];
-const VALID_STEPS = {
-  0: { label: 'Input', key: '0' },
-  25: { label: 'Alpha 0.25', key: '25' },
-  50: { label: 'Alpha 0.50', key: '50' },
-  75: { label: 'Alpha 0.75', key: '75' },
-  100: { label: 'Alpha 1.00', key: '100' },
-};
+const STEPS = [
+  { label: 'Input', key: '0' },
+  { label: '0.25', key: '25' },
+  { label: '0.50', key: '50' },
+  { label: '0.75', key: '75' },
+  { label: '1.00', key: '100' },
+];
 
 function updateSliderFill(slider) {
-  slider.style.setProperty('--pct', `${slider.value}%`);
+  const min = Number(slider.min || 0);
+  const max = Number(slider.max || 4);
+  const value = Number(slider.value || 0);
+  const pct = ((value - min) / (max - min)) * 100;
+  slider.style.setProperty('--pct', `${pct}%`);
 }
 
-function bindDiscreteViewer({ slider, image, blank, indicator, sample }) {
+function bindStepViewer({ slider, image, indicator, sample }) {
   function sync() {
     updateSliderFill(slider);
-    const value = Number(slider.value);
-    const step = VALID_STEPS[value];
-    if (!step) {
-      image.style.visibility = 'hidden';
-      blank.classList.remove('hidden');
-      indicator.textContent = 'Blank';
-      return;
-    }
+    const index = Math.max(0, Math.min(STEPS.length - 1, Number(slider.value)));
+    const step = STEPS[index];
     image.src = sample.paths[step.key];
-    image.style.visibility = 'visible';
-    blank.classList.add('hidden');
     indicator.textContent = step.label;
   }
 
@@ -37,10 +33,9 @@ function setupHero() {
   if (!heroSample) return;
   document.getElementById('hero-title').textContent = heroSample.title;
   document.getElementById('hero-subtitle').textContent = heroSample.subtitle;
-  bindDiscreteViewer({
+  bindStepViewer({
     slider: document.getElementById('hero-slider'),
     image: document.getElementById('hero-image'),
-    blank: document.getElementById('hero-blank'),
     indicator: document.getElementById('hero-state'),
     sample: heroSample,
   });
@@ -52,11 +47,9 @@ function renderGallery() {
 
   galleryData.forEach((sample) => {
     const fragment = template.content.cloneNode(true);
-    const card = fragment.querySelector('.interactive-card');
     const title = fragment.querySelector('.card-title');
     const subtitle = fragment.querySelector('.card-subtitle');
     const image = fragment.querySelector('.target-img');
-    const blank = fragment.querySelector('.card-blank');
     const slider = fragment.querySelector('.discrete-slider');
     const indicator = fragment.querySelector('.val-indicator');
 
@@ -64,7 +57,7 @@ function renderGallery() {
     subtitle.textContent = `${sample.subtitle} · ${sample.group}`;
     image.alt = `${sample.title} sample`;
 
-    bindDiscreteViewer({ slider, image, blank, indicator, sample });
+    bindStepViewer({ slider, image, indicator, sample });
     grid.appendChild(fragment);
   });
 }
