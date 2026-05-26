@@ -2,10 +2,10 @@
   <h2><a href="https://arxiv.org/abs/2605.25569">ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</a></h2>
   <p>
     <a href="https://yfyang007.github.io/ControlLight/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"/></a>
+    <a href="https://huggingface.co/papers/2605.25569"><img src="https://img.shields.io/badge/HuggingFace-Daily%20Papers-ffbf00.svg" alt="Hugging Face Daily Papers"/></a>
     <a href="https://arxiv.org/abs/2605.25569"><img src="https://img.shields.io/badge/arXiv-2605.25569-b31b1b.svg" alt="arXiv Paper"/></a>
     <a href="https://huggingface.co/ControlLight/ControlLight"><img src="https://img.shields.io/badge/HuggingFace-Models-yellow.svg" alt="Hugging Face Models"/></a>
     <a href="https://huggingface.co/datasets/ControlLight/Light100K"><img src="https://img.shields.io/badge/HuggingFace-Light100K-green.svg" alt="Light100K Dataset"/></a>
-    <a href="https://huggingface.co/papers/2605.25569"><img src="https://img.shields.io/badge/HuggingFace-Daily%20Papers-ffbf00.svg" alt="Hugging Face Daily Papers"/></a>
     <a href="https://github.com/yfyang007/ControlLight"><img src="https://img.shields.io/badge/GitHub-Code-black.svg" alt="GitHub Code"/></a>
   </p>
 </div>
