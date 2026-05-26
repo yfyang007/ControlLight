@@ -185,6 +185,12 @@ a {
   display: block;
 }
 
+.link-pill .icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .hf-icon {
   background: rgba(255, 210, 30, 0.12) !important;
 }
