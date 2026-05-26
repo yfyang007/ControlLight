@@ -101,6 +101,13 @@ a {
   gap: 12px;
 }
 
+.resource-links {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
 .hero-link {
   padding: 11px 16px;
   border-radius: 999px;
@@ -113,6 +120,62 @@ a {
   color: #1b1206;
   background: linear-gradient(135deg, #ffedcf, #d97706);
   border-color: rgba(255, 226, 180, 0.24);
+}
+
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.resource-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 119, 6, 0.24);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.resource-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+}
+
+.resource-icon.hf-icon {
+  background: #ffd21e;
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.resource-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.resource-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.resource-meta {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.resource-arrow {
+  margin-left: auto;
+  color: var(--accent-color);
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .hero-metrics {
@@ -214,6 +277,33 @@ a {
   width: 100%;
   border-radius: 14px;
   background: #0b0a09;
+}
+
+.citation-panel {
+  margin-top: 28px;
+}
+
+.citation-card {
+  margin-top: 22px;
+  border-radius: 24px;
+  padding: 20px 22px;
+  background: rgba(16, 15, 13, 0.95);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.citation-card pre,
+.citation-card code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.citation-card pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #f6e9d5;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .gallery-summary {
@@ -367,10 +457,14 @@ a {
 }
 
 @media (max-width: 1100px) {
-  .header-inner,
   .overview-grid,
-  .grid-container {
+  .grid-container,
+  .resource-links {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -390,7 +484,8 @@ a {
 
   .header-inner,
   .overview-grid,
-  .grid-container {
+  .grid-container,
+  .resource-links {
     grid-template-columns: 1fr;
   }
 

@@ -1,10 +1,11 @@
 <div align="center">
-  <h2><a href="https://arxiv.org/abs/0000.00000">ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</a></h2>
+  <h2><a href="https://arxiv.org/abs/2605.25569">ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement</a></h2>
   <p>
     <a href="https://yfyang007.github.io/ControlLight/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"/></a>
-    <a href="https://arxiv.org/abs/0000.00000"><img src="https://img.shields.io/badge/arXiv-coming--soon-b31b1b.svg" alt="arXiv Paper"/></a>
+    <a href="https://arxiv.org/abs/2605.25569"><img src="https://img.shields.io/badge/arXiv-2605.25569-b31b1b.svg" alt="arXiv Paper"/></a>
     <a href="https://huggingface.co/ControlLight/ControlLight"><img src="https://img.shields.io/badge/HuggingFace-Models-yellow.svg" alt="Hugging Face Models"/></a>
     <a href="https://huggingface.co/datasets/ControlLight/Light100K"><img src="https://img.shields.io/badge/HuggingFace-Light100K-green.svg" alt="Light100K Dataset"/></a>
+    <a href="https://huggingface.co/papers/2605.25569"><img src="https://img.shields.io/badge/HuggingFace-Daily%20Papers-ffbf00.svg" alt="Hugging Face Daily Papers"/></a>
     <a href="https://github.com/yfyang007/ControlLight"><img src="https://img.shields.io/badge/GitHub-Code-black.svg" alt="GitHub Code"/></a>
   </p>
 </div>
@@ -15,6 +16,8 @@
 
 ## News
 
+- [2026/05/26] Our paper is available on [arXiv](https://arxiv.org/abs/2605.25569).
+- [2026/05/26] ControlLight is featured on [Hugging Face Daily Papers](https://huggingface.co/papers/2605.25569).
 - [2026/05/25] We have released the [ControlLight model weights](https://huggingface.co/ControlLight/ControlLight) on Hugging Face.
 - [2026/05/25] We have released [Light100K](https://huggingface.co/datasets/ControlLight/Light100K), a continuous low-light enhancement dataset for controllable illumination learning.
 - [2026/05/25] We have released the ControlLight inference and training code.
@@ -256,13 +259,13 @@ run.py                  Training launcher
 If you find ControlLight useful in your research, please star and cite:
 
 ```bibtex
-@misc{yang2026controllight,
-      title={ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement},
+@misc{yang2026controllightcontrollableconsistentgeneralizable,
+      title={ControlLight: Towards Controllable, Consistent, and Generalizable Low-Light Enhancement}, 
       author={Yufeng Yang and Jianzhuang Liu and Jisheng Chu and Yuqi Peng and Xianfang Zeng and Jiancheng Huang and Shifeng Chen},
       year={2026},
-      eprint={0000.00000},
+      eprint={2605.25569},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/0000.00000},
+      url={https://arxiv.org/abs/2605.25569}, 
 }
 ```
