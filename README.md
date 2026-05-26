@@ -16,8 +16,6 @@
 
 ## News
 
-- [2026/05/26] Our paper is available on [arXiv](https://arxiv.org/abs/2605.25569).
-- [2026/05/26] ControlLight is featured on [Hugging Face Daily Papers](https://huggingface.co/papers/2605.25569).
 - [2026/05/25] We have released the [ControlLight model weights](https://huggingface.co/ControlLight/ControlLight) on Hugging Face.
 - [2026/05/25] We have released [Light100K](https://huggingface.co/datasets/ControlLight/Light100K), a continuous low-light enhancement dataset for controllable illumination learning.
 - [2026/05/25] We have released the ControlLight inference and training code.
