@@ -14,11 +14,19 @@
   <img src="assets/teaser.png" alt="ControlLight teaser" width="100%"/>
 </p>
 
+<p align="center">
+  <video src="assets/controllight_homepage_hero_brightening_wechat.mp4" controls width="100%"></video>
+</p>
+
 ## News
 
 - [2026/05/25] We have released the [ControlLight model weights](https://huggingface.co/ControlLight/ControlLight) on Hugging Face.
 - [2026/05/25] We have released [Light100K](https://huggingface.co/datasets/ControlLight/Light100K), a continuous low-light enhancement dataset for controllable illumination learning.
 - [2026/05/25] We have released the ControlLight inference and training code.
+
+## Note
+
+ControlLight requires about 21 GB of VRAM for inference. Although the released model was trained with a fixed prompt setting, you can also try editing the prompt to explore additional light-control effects, such as color and atmosphere. We welcome broader experimentation.
 
 ## TODO
 
